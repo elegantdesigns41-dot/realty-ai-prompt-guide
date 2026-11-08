@@ -412,7 +412,7 @@ function Samples() {
           <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">A peek inside the guide.</h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
             Every prompt is copy-paste ready. Just drop your property or client details into the{" "}
-            <span className="rounded bg-ember/25 px-1 font-semibold">[brackets]</span> and you'll
+            <span className="rounded bg-ember/15 px-1 font-semibold text-ember">[brackets]</span> and you'll
             have a polished first draft in seconds.
           </p>
           <p className="mt-4 text-muted-foreground">
@@ -614,7 +614,7 @@ function Pricing() {
         <div className="rounded-[2rem] bg-card p-8 text-card-foreground shadow-elegant sm:p-10">
           <div className="flex items-center justify-between">
             <p className="font-display text-2xl font-semibold">The Ultimate AI Prompt Guide</p>
-            <span className="shrink-0 whitespace-nowrap rounded-full bg-ember/25 px-3 py-1 text-xs font-bold uppercase tracking-wider">
+            <span className="shrink-0 whitespace-nowrap rounded-full bg-ember/15 text-ember px-3 py-1 text-xs font-bold uppercase tracking-wider">
               One-time
             </span>
           </div>
