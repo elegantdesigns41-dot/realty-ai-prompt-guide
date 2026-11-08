@@ -59,4 +59,14 @@ export const BONUSES = [
   { title: "Fair Housing Copy Checklist", value: "$19", desc: "Keep every AI-written listing and ad compliant before it goes live." },
 ];
 
-export const PRICE = { now: 47, was: 97 };
+export const PRICE_USD = 12.95;
+export const PRICE_LABEL = `$${PRICE_USD.toFixed(2)}`;
+
+/** Shown everywhere the total prompt count appears on the page. */
+export const PROMPT_COUNT_LABEL = "300+";
+
+/**
+ * WarriorPlus buy-button link (from the product's WarriorPlus dashboard).
+ * Leave empty until the real link is available; the buy button then shows a notice.
+ */
+export const WARRIORPLUS_BUY_URL = "";
