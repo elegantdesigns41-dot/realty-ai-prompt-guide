@@ -322,7 +322,7 @@ function Samples() {
             Copy one, paste it into your AI tool, and see the difference.
           </p>
         </div>
-        <Tabs defaultValue={SAMPLE_PROMPTS[0].tab}>
+        <Tabs defaultValue={SAMPLE_PROMPTS[0]?.tab}>
           <TabsList className="h-auto flex-wrap rounded-full bg-card p-1.5">
             {SAMPLE_PROMPTS.map((s) => (
               <TabsTrigger
