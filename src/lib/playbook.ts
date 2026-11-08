@@ -55,7 +55,7 @@ export const SAMPLE_PROMPTS: SamplePrompt[] = [
 
 export const BONUSES = [
   { title: "The AI Setup Cheat Sheet", value: "$27", desc: "Configure ChatGPT, Claude or Gemini with your brand voice in 10 minutes." },
-  { title: "90-Day Social Calendar", value: "$37", desc: "A done-for-you posting plan you fill with the playbook's prompts." },
+  { title: "90-Day Social Calendar", value: "$37", desc: "A done-for-you posting plan you fill with the guide's prompts." },
   { title: "Fair Housing Copy Checklist", value: "$19", desc: "Keep every AI-written listing and ad compliant before it goes live." },
 ];
 
