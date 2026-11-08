@@ -517,7 +517,7 @@ function Pricing() {
         <div className="rounded-[2rem] bg-card p-8 text-card-foreground shadow-elegant sm:p-10">
           <div className="flex items-center justify-between">
             <p className="font-display text-2xl font-semibold">The Ultimate AI Prompt Guide</p>
-            <span className="rounded-full bg-brass/25 px-3 py-1 text-xs font-bold uppercase tracking-wider">
+            <span className="shrink-0 whitespace-nowrap rounded-full bg-brass/25 px-3 py-1 text-xs font-bold uppercase tracking-wider">
               Launch price
             </span>
           </div>
