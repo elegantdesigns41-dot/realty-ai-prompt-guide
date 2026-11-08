@@ -30,13 +30,13 @@ import agentPhoto from "@/assets/agent-at-work.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "The Agent's Prompt Playbook — 300+ AI Prompts for Real Estate Agents" },
+      { title: "The Ultimate AI Prompt Guide for Real Estate Agents — 300+ Prompts" },
       {
         name: "description",
         content:
           "340 copy-and-paste AI prompts for listings, social media, follow-up, lead gen and negotiation. Built for real estate agents.",
       },
-      { property: "og:title", content: "The Agent's Prompt Playbook — 300+ AI Prompts for Agents" },
+      { property: "og:title", content: "The Ultimate AI Prompt Guide for Real Estate Agents" },
       {
         property: "og:description",
         content:
@@ -103,7 +103,7 @@ function Nav() {
             <KeyRound className="size-4" />
           </span>
           <span className="font-display text-lg font-semibold leading-none">
-            Prompt Playbook
+            The Ultimate AI Prompt Guide
           </span>
         </a>
         <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
@@ -113,7 +113,7 @@ function Nav() {
           <a href="#faq" className="hover:text-foreground">FAQ</a>
         </nav>
         <Button variant="forest" size="sm" className="rounded-full px-5" asChild>
-          <a href="#pricing">Get the playbook</a>
+          <a href="#pricing">Get the guide</a>
         </Button>
       </Container>
     </header>
@@ -165,7 +165,7 @@ function Hero() {
           <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-brass/20 blur-3xl" />
           <img
             src={mockup}
-            alt="The Agent's Prompt Playbook as a hardcover book and tablet edition"
+            alt="The Ultimate AI Prompt Guide for Real Estate Agents as a hardcover book and tablet edition"
             width={1280}
             height={1280}
             className="animate-float-slow w-full rounded-[2rem] shadow-elegant"
@@ -220,7 +220,7 @@ function Problem() {
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-forest-muted">
             AI can do the heavy lifting, but only if you know what to ask. Vague prompts get vague
-            results. The playbook gives you the exact words top agents use — tested, structured and
+            results. The guide gives you the exact words top agents use — tested, structured and
             ready to customize.
           </p>
         </div>
@@ -380,7 +380,7 @@ function WhoFor() {
             Built for agents, not tech experts.
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            No AI experience needed. If you can copy and paste, you can use the playbook.
+            No AI experience needed. If you can copy and paste, you can use the guide.
           </p>
           <ul className="mt-8 space-y-5">
             {who.map((w) => (
@@ -411,7 +411,7 @@ function Bonuses() {
             <h2 className="mt-5 text-4xl font-medium sm:text-5xl">Included at no extra cost</h2>
           </div>
           <p className="max-w-sm text-muted-foreground">
-            Everything you need to get set up and stay consistent — yours free with the playbook.
+            Everything you need to get set up and stay consistent — yours free with the guide.
           </p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -497,7 +497,7 @@ function Pricing() {
     <section id="pricing" className="scroll-mt-20 bg-forest-gradient py-20 text-forest-foreground md:py-28">
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <div>
-          <p className="eyebrow text-brass">Get the playbook</p>
+          <p className="eyebrow text-brass">Get the guide</p>
           <h2 className="mt-5 text-4xl font-medium leading-tight sm:text-5xl">
             One payment. Every prompt. Yours forever.
           </h2>
@@ -508,7 +508,7 @@ function Pricing() {
           <div className="mt-8 flex items-center gap-4 rounded-2xl border border-forest-foreground/15 bg-forest-foreground/5 p-5">
             <ShieldCheck className="size-10 shrink-0 text-brass" />
             <p className="text-sm leading-relaxed">
-              <strong>30-day money-back guarantee.</strong> If the playbook doesn't save you time,
+              <strong>30-day money-back guarantee.</strong> If the guide doesn't save you time,
               email us and we'll refund every cent. No questions asked.
             </p>
           </div>
@@ -516,7 +516,7 @@ function Pricing() {
 
         <div className="rounded-[2rem] bg-card p-8 text-card-foreground shadow-elegant sm:p-10">
           <div className="flex items-center justify-between">
-            <p className="font-display text-2xl font-semibold">Complete Playbook</p>
+            <p className="font-display text-2xl font-semibold">The Ultimate AI Prompt Guide</p>
             <span className="rounded-full bg-brass/25 px-3 py-1 text-xs font-bold uppercase tracking-wider">
               Launch price
             </span>
@@ -612,7 +612,7 @@ function FinalCta() {
           </p>
           <Button variant="brass" size="xl" className="relative mt-9" asChild>
             <a href="#pricing">
-              Get the playbook — ${PRICE.now}
+              Get the guide — ${PRICE.now}
               <ArrowRight />
             </a>
           </Button>
@@ -627,7 +627,7 @@ function Footer() {
     <footer className="border-t border-border py-10">
       <Container className="flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground sm:flex-row">
         <p className="flex items-center gap-2">
-          <KeyRound className="size-4 text-primary" /> The Agent's Prompt Playbook
+          <KeyRound className="size-4 text-primary" /> The Ultimate AI Prompt Guide for Real Estate Agents
         </p>
         <p>© {new Date().getFullYear()} · AI output should always be reviewed before publishing.</p>
       </Container>
