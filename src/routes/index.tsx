@@ -8,6 +8,7 @@ import {
   Clock,
   Gift,
   KeyRound,
+  Lightbulb,
   ShieldCheck,
   Star,
   X,
@@ -441,9 +442,18 @@ function Samples() {
                     {copied === s.tab ? "Copied" : "Copy"}
                   </Button>
                 </div>
-                <p className="mt-5 text-[15px] leading-8 text-foreground/90">
+                <p className="mt-3 text-sm text-muted-foreground">
+                  <span className="font-semibold text-foreground">Use it for:</span> {s.useFor}
+                </p>
+                <p className="mt-5 whitespace-pre-line rounded-2xl bg-muted p-5 text-[15px] leading-7 text-foreground/90">
                   <Highlighted text={s.prompt} />
                 </p>
+                <div className="mt-5 flex items-start gap-3 rounded-2xl border border-ember/30 bg-ember/10 p-4 text-sm leading-relaxed">
+                  <Lightbulb className="mt-0.5 size-4 shrink-0 text-ember" />
+                  <p>
+                    <span className="font-semibold">Tip:</span> {s.tip}
+                  </p>
+                </div>
               </div>
             </TabsContent>
           ))}
