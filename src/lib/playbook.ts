@@ -23,33 +23,50 @@ export const TOTAL_PROMPTS = PROMPT_CATEGORIES.reduce((sum, c) => sum + c.count,
 export type SamplePrompt = {
   tab: string;
   label: string;
+  useFor: string;
   prompt: string;
+  tip: string;
 };
 
 export const SAMPLE_PROMPTS: SamplePrompt[] = [
   {
     tab: "Listings",
-    label: "The lifestyle listing",
-    prompt:
-      "Act as a top-producing listing agent in [city]. Write a 200-word MLS description for a [beds]-bed, [baths]-bath [property type] at [price]. Lead with the lifestyle a [target buyer] would live here, weave in these features: [top 5 features], and close with a clear call to book a showing. Avoid clichés like \"must see\" and \"won't last long.\"",
+    label: "The MLS Listing Description",
+    useFor: "Any new listing, when you need a clean, professional description fast.",
+    prompt: `Act as an experienced real estate listing copywriter. Write an MLS description for the home below. Keep it under 200 words, in flowing paragraphs, written for [BUYER TYPE]. Describe the property and features only — do not reference the buyer's identity or protected class.
+
+Property details:
+- Beds/baths: [X BED / X BATH]
+- Square footage: [SQ FT]
+- Key features: [LIST 3-5 STANDOUT FEATURES]
+- Recent updates: [LIST ANY]
+- Nearby: [SCHOOLS, PARKS, COMMUTE POINTS]`,
+    tip: "Always run the output through a quick fair housing check afterward — see prompt #10 in the guide.",
   },
   {
     tab: "Social",
-    label: "30-second Reel script",
-    prompt:
-      "Write a 30-second Instagram Reel script for a real estate agent in [neighborhood]. Hook in the first 2 seconds with a surprising local fact, show 3 quick scenes of [property or area], and end with a soft call to action to DM me \"[keyword]\". Include on-screen text for each scene and a caption with 5 local hashtags.",
+    label: "The \"Just Listed\" Social Post",
+    useFor: "The moment a new listing goes live.",
+    prompt: `Act as a real estate marketer. Write a "Just Listed" announcement for this property, exciting but professional, for use across email and social. 60-80 words. End with a clear call to action.
+
+Property details: [PASTE KEY FEATURES + PRICE]`,
+    tip: "Ask for 3 tone variations (excited, calm/professional, casual) so you have options for different platforms.",
   },
   {
     tab: "Follow-up",
-    label: "Revive a cold lead",
-    prompt:
-      "I spoke with [lead name] [time ago] about buying in [area] with a budget of [budget]. They went quiet. Write 3 short, friendly text messages I can send over 10 days to restart the conversation. Each should offer genuine value (a new listing, a market stat, a helpful tip) and never feel pushy.",
+    label: "The Buyer Follow-Up Email",
+    useFor: "Following up after a showing, without sounding pushy.",
+    prompt: `Act as a real estate email copywriter. Write a follow-up email after a buyer toured a home, gauging their interest without being pushy. 100-120 words.
+
+Property: [ADDRESS/KEY FEATURES]`,
+    tip: "Ask a specific question about the home (\"how did the kitchen layout feel?\") instead of a generic \"thoughts?\" — specific questions get real answers.",
   },
   {
-    tab: "Objections",
-    label: "\"Your commission is too high\"",
-    prompt:
-      "A seller in [city] says: \"Another agent offered to list for [lower %].\" Give me a calm, confident 60-second response that explains the value of my [marketing plan highlights] and net-proceeds focus, followed by 2 questions that uncover what they truly care about. Keep the tone warm, not defensive.",
+    tab: "Expired",
+    label: "The Expired Listing Outreach",
+    useFor: "Reaching out to a homeowner whose listing just expired, respectfully.",
+    prompt: `Act as a real estate email copywriter. Write a respectful, non-pushy first outreach email to a homeowner whose listing just expired. Acknowledge it didn't sell without criticizing their previous agent. Offer a fresh perspective. 150-180 words.`,
+    tip: "Never let the AI disparage the previous agent, even indirectly — this should sound like a fresh, confident perspective, not a takedown.",
   },
 ];
 
