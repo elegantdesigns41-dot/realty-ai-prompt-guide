@@ -5,15 +5,15 @@ export type PromptCategory = {
 };
 
 export const PROMPT_CATEGORIES: PromptCategory[] = [
-  { title: "Listing descriptions", count: 45, blurb: "MLS copy, feature sheets and luxury write-ups that sell the lifestyle." },
+  { title: "Listing descriptions", count: 45, blurb: "MLS copy by property type — condos, luxury, starter homes, land and more." },
   { title: "Social media content", count: 50, blurb: "Reels scripts, carousels, captions and 30-day content calendars." },
-  { title: "Lead generation", count: 40, blurb: "Farming letters, FSBO and expired outreach, and ad copy that converts." },
+  { title: "Lead generation", count: 40, blurb: "Expired and FSBO outreach, farming letters, and ad copy that converts." },
   { title: "Email & SMS follow-up", count: 40, blurb: "Nurture sequences that keep you top of mind without sounding robotic." },
-  { title: "Buyer consultations", count: 30, blurb: "Needs analysis, neighborhood guides and offer-strategy explainers." },
-  { title: "Listing presentations", count: 30, blurb: "Pricing narratives, marketing plans and win-the-listing scripts." },
-  { title: "Negotiation & objections", count: 25, blurb: "Calm, confident answers to commission, price and timing pushback." },
-  { title: "Market reports", count: 25, blurb: "Turn raw stats into monthly updates clients actually read." },
-  { title: "Open houses & events", count: 20, blurb: "Invites, sign-in follow-ups and client appreciation event plans." },
+  { title: "Buyer scripts", count: 30, blurb: "Consultation scripts, neighborhood guides and offer-strategy explainers." },
+  { title: "Seller scripts & presentations", count: 30, blurb: "Listing presentations, pricing talks and win-the-listing scripts." },
+  { title: "Negotiation & objections", count: 25, blurb: "Negotiation language and calm answers to commission, price and timing pushback." },
+  { title: "Market reports & newsletters", count: 25, blurb: "Turn raw stats into newsletters and updates clients actually read." },
+  { title: "Open house promotion", count: 20, blurb: "Invites, promo posts, sign-in follow-ups and client events." },
   { title: "Client care & referrals", count: 20, blurb: "Closing gifts, anniversaries and review requests that earn referrals." },
   { title: "Business & productivity", count: 15, blurb: "Business plans, SOPs, hiring posts and weekly time-blocking." },
 ];

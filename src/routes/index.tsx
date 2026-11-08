@@ -63,7 +63,9 @@ function SalesPage() {
         <Hero />
         <ProofStrip />
         <Problem />
+        <Different />
         <Inside />
+        <Structure />
         <Samples />
         <WhoFor />
         <Bonuses />
@@ -128,9 +130,10 @@ function Hero() {
             <em className="font-normal text-primary">before your coffee</em> gets cold.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            <strong className="text-foreground">{PROMPT_COUNT_LABEL} copy-and-paste AI prompts</strong> for
-            listings, social posts, follow-ups, lead gen and tough client conversations. Fill in the
-            blanks, paste into ChatGPT, and go sell homes.
+            A <strong className="text-foreground">{PROMPT_COUNT_LABEL} prompt library</strong> built
+            exclusively for real estate professionals. Drop in your property or client details and get a
+            polished first draft in seconds — instead of a blank page in front of you for twenty
+            minutes.
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
             <Button variant="brass" size="xl" asChild>
@@ -141,7 +144,7 @@ function Hero() {
             </Button>
           </div>
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-            {["Instant download", "Works with ChatGPT, Claude & Gemini", "30-day guarantee"].map(
+            {["Instant download", "ChatGPT, Claude, Gemini & Perplexity", "30-day guarantee"].map(
               (t) => (
                 <li key={t} className="flex items-center gap-2">
                   <Check className="size-4 text-primary" />
@@ -195,39 +198,142 @@ function ProofStrip() {
 }
 
 function Problem() {
-  const pains = [
-    "Staring at a blank MLS box for 40 minutes",
-    "Posting nothing on social because you're “too busy”",
-    "Leads going cold because follow-up never happens",
-    "AI giving you generic, robotic copy every time",
+  const tasks = [
+    "MLS descriptions",
+    "Social captions",
+    "Follow-up emails",
+    "Listing presentations",
+    "Objection-handling scripts",
+    "Newsletter content",
+    "Ad copy",
   ];
   return (
     <section className="bg-forest-gradient text-forest-foreground">
       <Container className="grid gap-12 py-20 md:py-28 lg:grid-cols-2 lg:gap-20">
         <div>
-          <p className="eyebrow text-brass">The problem</p>
+          <p className="eyebrow text-brass">Sound familiar?</p>
           <h2 className="mt-5 text-4xl font-medium leading-tight sm:text-5xl">
-            You got into real estate to sell homes — not to write all day.
+            You didn't get into real estate to become a copywriter.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-forest-muted">
-            AI can do the heavy lifting, but only if you know what to ask. Vague prompts get vague
-            results. The guide gives you the exact words top agents use — tested, structured and
-            ready to customize.
+            But somehow, that's half the job now. All of it, every week, on top of showings,
+            negotiations, and everything else on your plate.
           </p>
         </div>
-        <ul className="space-y-4 self-center">
-          {pains.map((p) => (
-            <li
-              key={p}
-              className="flex items-start gap-4 rounded-2xl border border-forest-foreground/15 bg-forest-foreground/5 p-5"
-            >
-              <span className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-forest-foreground/10">
-                <X className="size-4 text-brass" />
-              </span>
-              <span className="text-base">{p}</span>
+        <div className="self-center">
+          <ul className="flex flex-wrap gap-3">
+            {tasks.map((t) => (
+              <li
+                key={t}
+                className="rounded-full border border-forest-foreground/20 bg-forest-foreground/5 px-5 py-2.5 text-base"
+              >
+                {t}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 rounded-2xl border border-brass/40 bg-forest-foreground/5 p-6">
+            <p className="text-lg leading-relaxed">
+              This guide hands you the shortcut —{" "}
+              <span className="text-brass">
+                without handing you generic, robotic-sounding AI junk
+              </span>{" "}
+              that no client would ever believe came from you.
+            </p>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function Different() {
+  const generic = [
+    "The same 20 prompts recycled for every industry",
+    "“Insert your business” swapped in and called custom",
+    "Output that sounds robotic and obviously AI",
+  ];
+  const ours = [
+    "Listings by property type",
+    "Buyer and seller scripts",
+    "Expired and FSBO outreach",
+    "Open house promotion",
+    "Negotiation language",
+    "Dozens more real tasks that fill your week",
+  ];
+  return (
+    <section className="py-20 md:py-28">
+      <Container>
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="eyebrow text-primary">Why it's different</p>
+          <h2 className="mt-5 text-4xl font-medium sm:text-5xl">
+            Not another free “AI prompts” PDF.
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+            Every single prompt was built around the actual workflow of a real estate agent.
+          </p>
+        </div>
+        <div className="mt-14 grid gap-6 md:grid-cols-[0.9fr_1.1fr]">
+          <div className="rounded-3xl border border-border bg-secondary/60 p-8">
+            <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">
+              Most prompt lists
+            </p>
+            <ul className="mt-6 space-y-4">
+              {generic.map((g) => (
+                <li key={g} className="flex items-start gap-3 text-muted-foreground">
+                  <X className="mt-0.5 size-5 shrink-0" />
+                  {g}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-3xl bg-primary p-8 text-primary-foreground shadow-elegant">
+            <p className="text-sm font-bold uppercase tracking-widest text-brass">
+              The Ultimate AI Prompt Guide
+            </p>
+            <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+              {ours.map((o) => (
+                <li key={o} className="flex items-start gap-3">
+                  <Check className="mt-0.5 size-5 shrink-0 text-brass" />
+                  {o}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function Structure() {
+  const steps = [
+    { t: "What it does", d: "The outcome, in plain English." },
+    { t: "When to use it", d: "The real situation that calls for it." },
+    { t: "The copy-paste prompt", d: "Ready to drop into any AI tool." },
+    { t: "How to customize it", d: "So it sounds like you, not a robot." },
+    { t: "A real example output", d: "So you know what to expect before you even try it." },
+  ];
+  return (
+    <section className="border-y border-border bg-card py-20 md:py-24">
+      <Container>
+        <div className="max-w-2xl">
+          <p className="eyebrow text-primary">How every prompt works</p>
+          <h2 className="mt-5 text-4xl font-medium sm:text-5xl">
+            The same simple structure, every time.
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground">
+            So you always know exactly what you're getting.
+          </p>
+        </div>
+        <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {steps.map((st, i) => (
+            <li key={st.t} className="rounded-3xl border border-border bg-background p-6">
+              <span className="font-display text-4xl font-semibold text-brass">{i + 1}</span>
+              <p className="mt-4 text-lg font-semibold">{st.t}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{st.d}</p>
             </li>
           ))}
-        </ul>
+        </ol>
       </Container>
     </section>
   );
@@ -305,9 +411,9 @@ function Samples() {
           <p className="eyebrow text-primary">Sample prompts</p>
           <h2 className="mt-5 text-4xl font-medium sm:text-5xl">A peek inside the guide.</h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-            Every prompt is built the same way: a role, a clear task, your details in the{" "}
-            <span className="rounded bg-brass/25 px-1 font-semibold">[brackets]</span>, and
-            guardrails that keep the output sounding like you.
+            Every prompt is copy-paste ready. Just drop your property or client details into the{" "}
+            <span className="rounded bg-brass/25 px-1 font-semibold">[brackets]</span> and you'll
+            have a polished first draft in seconds.
           </p>
           <p className="mt-4 text-muted-foreground">
             Copy one, paste it into your AI tool, and see the difference.
@@ -541,11 +647,11 @@ function Faq() {
   const faqs = [
     {
       q: "Do I need to be good with technology?",
-      a: "Not at all. Each prompt is copy-and-paste. Fill in the parts in brackets, paste into ChatGPT (or Claude, or Gemini), and you'll have a result in seconds.",
+      a: "Not at all. Each prompt is copy-and-paste. Fill in the parts in brackets, paste into ChatGPT, Claude, Gemini or Perplexity, and you'll have a polished first draft in seconds.",
     },
     {
       q: "Which AI tools does it work with?",
-      a: "Every prompt works with ChatGPT, Claude, Gemini and Copilot — including the free versions.",
+      a: "Every prompt is ready to use with ChatGPT, Claude, Gemini or Perplexity — including the free versions.",
     },
     {
       q: "Will my listings sound like everyone else's?",
