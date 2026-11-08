@@ -98,7 +98,7 @@ function Nav() {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5">
-          <span className="grid size-9 place-items-center rounded-full bg-primary text-brass">
+          <span className="grid size-9 place-items-center rounded-full bg-primary text-ember">
             <KeyRound className="size-4" />
           </span>
           <span className="font-display text-lg font-semibold leading-none">
@@ -111,7 +111,7 @@ function Nav() {
           <a href="#pricing" className="hover:text-foreground">Pricing</a>
           <a href="#faq" className="hover:text-foreground">FAQ</a>
         </nav>
-        <Button variant="forest" size="sm" className="rounded-full px-5" asChild>
+        <Button variant="ink" size="sm" className="rounded-full px-5" asChild>
           <a href="#pricing">Get the guide</a>
         </Button>
       </Container>
@@ -136,7 +136,7 @@ function Hero() {
             minutes.
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <Button variant="brass" size="xl" asChild>
+            <Button variant="ember" size="xl" asChild>
               <a href="#pricing">
                 Get instant access — {PRICE_LABEL}
                 <ArrowRight />
@@ -156,7 +156,7 @@ function Hero() {
         </div>
 
         <div className="relative animate-rise [animation-delay:150ms]">
-          <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-brass/20 blur-3xl" />
+          <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-ember/20 blur-3xl" />
           <img
             src={mockup}
             alt="The Ultimate AI Prompt Guide for Real Estate Agents as a hardcover book and tablet edition"
@@ -208,14 +208,14 @@ function Problem() {
     "Ad copy",
   ];
   return (
-    <section className="bg-forest-gradient text-forest-foreground">
+    <section className="bg-ink-gradient text-ink-foreground">
       <Container className="grid gap-12 py-20 md:py-28 lg:grid-cols-2 lg:gap-20">
         <div>
-          <p className="eyebrow text-brass">Sound familiar?</p>
+          <p className="eyebrow text-ember">Sound familiar?</p>
           <h2 className="mt-5 text-4xl font-medium leading-tight sm:text-5xl">
             You didn't get into real estate to become a copywriter.
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-forest-muted">
+          <p className="mt-6 text-lg leading-relaxed text-ink-muted">
             But somehow, that's half the job now. All of it, every week, on top of showings,
             negotiations, and everything else on your plate.
           </p>
@@ -225,16 +225,16 @@ function Problem() {
             {tasks.map((t) => (
               <li
                 key={t}
-                className="rounded-full border border-forest-foreground/20 bg-forest-foreground/5 px-5 py-2.5 text-base"
+                className="rounded-full border border-ink-foreground/20 bg-ink-foreground/5 px-5 py-2.5 text-base"
               >
                 {t}
               </li>
             ))}
           </ul>
-          <div className="mt-8 rounded-2xl border border-brass/40 bg-forest-foreground/5 p-6">
+          <div className="mt-8 rounded-2xl border border-ember/40 bg-ink-foreground/5 p-6">
             <p className="text-lg leading-relaxed">
               This guide hands you the shortcut —{" "}
-              <span className="text-brass">
+              <span className="text-ember">
                 without handing you generic, robotic-sounding AI junk
               </span>{" "}
               that no client would ever believe came from you.
@@ -287,13 +287,13 @@ function Different() {
             </ul>
           </div>
           <div className="rounded-3xl bg-primary p-8 text-primary-foreground shadow-elegant">
-            <p className="text-sm font-bold uppercase tracking-widest text-brass">
+            <p className="text-sm font-bold uppercase tracking-widest text-ember">
               The Ultimate AI Prompt Guide
             </p>
             <ul className="mt-6 grid gap-4 sm:grid-cols-2">
               {ours.map((o) => (
                 <li key={o} className="flex items-start gap-3">
-                  <Check className="mt-0.5 size-5 shrink-0 text-brass" />
+                  <Check className="mt-0.5 size-5 shrink-0 text-ember" />
                   {o}
                 </li>
               ))}
@@ -328,7 +328,7 @@ function Structure() {
         <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((st, i) => (
             <li key={st.t} className="rounded-3xl border border-border bg-background p-6">
-              <span className="font-display text-4xl font-semibold text-brass">{i + 1}</span>
+              <span className="font-display text-4xl font-semibold text-ember">{i + 1}</span>
               <p className="mt-4 text-lg font-semibold">{st.t}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{st.d}</p>
             </li>
@@ -366,7 +366,7 @@ function Inside() {
             </div>
           ))}
           <div className="flex flex-col justify-center bg-primary p-7 text-primary-foreground">
-            <p className="font-display text-5xl font-semibold text-brass">{PROMPT_COUNT_LABEL}</p>
+            <p className="font-display text-5xl font-semibold text-ember">{PROMPT_COUNT_LABEL}</p>
             <p className="mt-2 text-lg font-semibold">prompts total</p>
             <p className="mt-1 text-sm opacity-80">Plus free updates as new AI tools arrive.</p>
           </div>
@@ -382,7 +382,7 @@ function Highlighted({ text }: { text: string }) {
     <>
       {parts.map((p, i) =>
         p.startsWith("[") ? (
-          <span key={i} className="rounded bg-brass/25 px-1 font-semibold text-accent-foreground">
+          <span key={i} className="rounded bg-ember/25 px-1 font-semibold text-accent-foreground">
             {p}
           </span>
         ) : (
@@ -412,7 +412,7 @@ function Samples() {
           <h2 className="mt-5 text-4xl font-medium sm:text-5xl">A peek inside the guide.</h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
             Every prompt is copy-paste ready. Just drop your property or client details into the{" "}
-            <span className="rounded bg-brass/25 px-1 font-semibold">[brackets]</span> and you'll
+            <span className="rounded bg-ember/25 px-1 font-semibold">[brackets]</span> and you'll
             have a polished first draft in seconds.
           </p>
           <p className="mt-4 text-muted-foreground">
@@ -515,7 +515,7 @@ function Bonuses() {
           {BONUSES.map((b) => (
             <div key={b.title} className="relative rounded-3xl border border-border bg-background p-7">
               <div className="flex items-center justify-between">
-                <span className="grid size-11 place-items-center rounded-2xl bg-brass/25 text-accent-foreground">
+                <span className="grid size-11 place-items-center rounded-2xl bg-ember/25 text-accent-foreground">
                   <Gift className="size-5" />
                 </span>
                 <span className="text-sm text-muted-foreground">
@@ -561,7 +561,7 @@ function Testimonials() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {quotes.map((t) => (
             <figure key={t.n} className="flex flex-col rounded-3xl border border-border bg-card p-8">
-              <div className="flex gap-1 text-brass">
+              <div className="flex gap-1 text-ember">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="size-4 fill-current" />
                 ))}
@@ -591,19 +591,19 @@ function Pricing() {
     "Lifetime access and free updates",
   ];
   return (
-    <section id="pricing" className="scroll-mt-20 bg-forest-gradient py-20 text-forest-foreground md:py-28">
+    <section id="pricing" className="scroll-mt-20 bg-ink-gradient py-20 text-ink-foreground md:py-28">
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <div>
-          <p className="eyebrow text-brass">Get the guide</p>
+          <p className="eyebrow text-ember">Get the guide</p>
           <h2 className="mt-5 text-4xl font-medium leading-tight sm:text-5xl">
             One payment. Every prompt. Yours forever.
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-forest-muted">
+          <p className="mt-6 text-lg leading-relaxed text-ink-muted">
             Less than the cost of one lunch with a client — and it pays for itself the first time it
             saves you an evening of writing.
           </p>
-          <div className="mt-8 flex items-center gap-4 rounded-2xl border border-forest-foreground/15 bg-forest-foreground/5 p-5">
-            <ShieldCheck className="size-10 shrink-0 text-brass" />
+          <div className="mt-8 flex items-center gap-4 rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-5">
+            <ShieldCheck className="size-10 shrink-0 text-ember" />
             <p className="text-sm leading-relaxed">
               <strong>30-day money-back guarantee.</strong> If the guide doesn't save you time,
               email us and we'll refund every cent. No questions asked.
@@ -614,7 +614,7 @@ function Pricing() {
         <div className="rounded-[2rem] bg-card p-8 text-card-foreground shadow-elegant sm:p-10">
           <div className="flex items-center justify-between">
             <p className="font-display text-2xl font-semibold">The Ultimate AI Prompt Guide</p>
-            <span className="shrink-0 whitespace-nowrap rounded-full bg-brass/25 px-3 py-1 text-xs font-bold uppercase tracking-wider">
+            <span className="shrink-0 whitespace-nowrap rounded-full bg-ember/25 px-3 py-1 text-xs font-bold uppercase tracking-wider">
               One-time
             </span>
           </div>
@@ -630,7 +630,7 @@ function Pricing() {
               </li>
             ))}
           </ul>
-          <Button variant="brass" size="xl" className="mt-9 w-full" onClick={handleBuy}>
+          <Button variant="ember" size="xl" className="mt-9 w-full" onClick={handleBuy}>
             <Download />
             Get instant access
           </Button>
@@ -699,14 +699,14 @@ function FinalCta() {
     <section className="pb-20">
       <Container>
         <div className="relative overflow-hidden rounded-[2.5rem] bg-primary px-8 py-16 text-center text-primary-foreground sm:px-16 sm:py-20">
-          <div className="absolute -right-24 -top-24 size-72 rounded-full bg-brass/20 blur-3xl" />
+          <div className="absolute -right-24 -top-24 size-72 rounded-full bg-ember/20 blur-3xl" />
           <h2 className="relative mx-auto max-w-2xl text-4xl font-medium sm:text-5xl">
             Your next listing description is 60 seconds away.
           </h2>
           <p className="relative mx-auto mt-5 max-w-lg text-lg opacity-85">
             Join the agents who stopped writing from scratch.
           </p>
-          <Button variant="brass" size="xl" className="relative mt-9" asChild>
+          <Button variant="ember" size="xl" className="relative mt-9" asChild>
             <a href="#pricing">
               Get the guide — {PRICE_LABEL}
               <ArrowRight />

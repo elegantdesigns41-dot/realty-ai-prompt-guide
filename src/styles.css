@@ -62,15 +62,15 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --color-forest: var(--forest);
-  --color-forest-foreground: var(--forest-foreground);
-  --color-forest-muted: var(--forest-muted);
-  --color-brass: var(--brass);
-  --color-brass-soft: var(--brass-soft);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-ink-muted: var(--ink-muted);
+  --color-ember: var(--ember);
+  --color-ember-soft: var(--ember-soft);
   --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --shadow-elegant: var(--shadow-elegant);
-  --shadow-brass: var(--shadow-brass);
+  --shadow-ember: var(--shadow-ember);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -103,15 +103,15 @@
   --input: oklch(0.875 0.026 85);
   --ring: oklch(0.76 0.115 78);
 
-  --forest: oklch(0.255 0.048 162);
-  --forest-foreground: oklch(0.955 0.02 85);
-  --forest-muted: oklch(0.78 0.03 140);
-  --brass: oklch(0.76 0.115 78);
-  --brass-soft: oklch(0.86 0.08 82);
-  --gradient-forest: radial-gradient(120% 90% at 85% 0%, oklch(0.36 0.07 160) 0%, var(--forest) 55%, oklch(0.2 0.04 165) 100%);
-  --gradient-brass: linear-gradient(135deg, var(--brass-soft), var(--brass));
-  --shadow-elegant: 0 30px 60px -25px color-mix(in oklab, var(--forest) 45%, transparent);
-  --shadow-brass: 0 12px 30px -12px color-mix(in oklab, var(--brass) 70%, transparent);
+  --ink: oklch(0.255 0.048 162);
+  --ink-foreground: oklch(0.955 0.02 85);
+  --ink-muted: oklch(0.78 0.03 140);
+  --ember: oklch(0.76 0.115 78);
+  --ember-soft: oklch(0.86 0.08 82);
+  --gradient-ink: radial-gradient(120% 90% at 85% 0%, oklch(0.36 0.07 160) 0%, var(--ink) 55%, oklch(0.2 0.04 165) 100%);
+  --gradient-ember: linear-gradient(135deg, var(--ember-soft), var(--ember));
+  --shadow-elegant: 0 30px 60px -25px color-mix(in oklab, var(--ink) 45%, transparent);
+  --shadow-ember: 0 12px 30px -12px color-mix(in oklab, var(--ember) 70%, transparent);
 
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -152,12 +152,12 @@
   }
 }
 
-@utility bg-forest-gradient {
-  background-image: var(--gradient-forest);
+@utility bg-ink-gradient {
+  background-image: var(--gradient-ink);
 }
 
-@utility bg-brass-gradient {
-  background-image: var(--gradient-brass);
+@utility bg-ember-gradient {
+  background-image: var(--gradient-ember);
 }
 
 @utility eyebrow {
