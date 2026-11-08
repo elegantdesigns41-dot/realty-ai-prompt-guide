@@ -9,7 +9,6 @@ import {
   Gift,
   KeyRound,
   ShieldCheck,
-  Sparkles,
   Star,
   X,
   Download,
@@ -23,7 +22,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { BONUSES, PRICE, PROMPT_CATEGORIES, SAMPLE_PROMPTS, TOTAL_PROMPTS } from "@/lib/playbook";
+import {
+  BONUSES,
+  PRICE_LABEL,
+  PROMPT_CATEGORIES,
+  PROMPT_COUNT_LABEL,
+  SAMPLE_PROMPTS,
+  WARRIORPLUS_BUY_URL,
+} from "@/lib/playbook";
 import mockup from "@/assets/playbook-mockup.jpg";
 import agentPhoto from "@/assets/agent-at-work.jpg";
 
@@ -34,13 +40,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "340 copy-and-paste AI prompts for listings, social media, follow-up, lead gen and negotiation. Built for real estate agents.",
+          "300+ copy-and-paste AI prompts for listings, social media, follow-up, lead gen and negotiation. Built for real estate agents.",
       },
       { property: "og:title", content: "The Ultimate AI Prompt Guide for Real Estate Agents" },
       {
         property: "og:description",
         content:
-          "Write listings, posts and follow-ups in minutes. 340 proven AI prompts for real estate agents.",
+          "Write listings, posts and follow-ups in minutes. 300+ proven AI prompts for real estate agents.",
       },
       { property: "og:type", content: "product" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -52,7 +58,6 @@ export const Route = createFileRoute("/")({
 function SalesPage() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
-      <AnnouncementBar />
       <Nav />
       <main>
         <Hero />
@@ -73,6 +78,10 @@ function SalesPage() {
 }
 
 function handleBuy() {
+  if (WARRIORPLUS_BUY_URL) {
+    window.location.href = WARRIORPLUS_BUY_URL;
+    return;
+  }
   toast("Checkout is almost ready", {
     description: "Secure payment is being connected. Check back very soon!",
   });
@@ -80,18 +89,6 @@ function handleBuy() {
 
 function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <div className={`mx-auto w-full max-w-6xl px-5 sm:px-8 ${className}`}>{children}</div>;
-}
-
-function AnnouncementBar() {
-  return (
-    <div className="bg-forest text-forest-foreground">
-      <Container className="flex items-center justify-center gap-2 py-2 text-center text-xs font-semibold sm:text-sm">
-        <Sparkles className="size-4 text-brass" />
-        Launch pricing: save {Math.round((1 - PRICE.now / PRICE.was) * 100)}% — ${PRICE.now} instead of $
-        {PRICE.was}
-      </Container>
-    </div>
-  );
 }
 
 function Nav() {
@@ -108,7 +105,7 @@ function Nav() {
         </a>
         <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
           <a href="#inside" className="hover:text-foreground">What's inside</a>
-          <a href="#samples" className="hover:text-foreground">Free samples</a>
+          <a href="#samples" className="hover:text-foreground">Sample prompts</a>
           <a href="#pricing" className="hover:text-foreground">Pricing</a>
           <a href="#faq" className="hover:text-foreground">FAQ</a>
         </nav>
@@ -131,23 +128,17 @@ function Hero() {
             <em className="font-normal text-primary">before your coffee</em> gets cold.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            <strong className="text-foreground">{TOTAL_PROMPTS} copy-and-paste AI prompts</strong> for
+            <strong className="text-foreground">{PROMPT_COUNT_LABEL} copy-and-paste AI prompts</strong> for
             listings, social posts, follow-ups, lead gen and tough client conversations. Fill in the
             blanks, paste into ChatGPT, and go sell homes.
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
             <Button variant="brass" size="xl" asChild>
               <a href="#pricing">
-                Get instant access — ${PRICE.now}
+                Get instant access — {PRICE_LABEL}
                 <ArrowRight />
               </a>
             </Button>
-            <a
-              href="#samples"
-              className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
-            >
-              Try 4 free prompts first
-            </a>
           </div>
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
             {["Instant download", "Works with ChatGPT, Claude & Gemini", "30-day guarantee"].map(
@@ -171,7 +162,7 @@ function Hero() {
             className="animate-float-slow w-full rounded-[2rem] shadow-elegant"
           />
           <div className="absolute -bottom-6 -left-4 rounded-2xl border border-border bg-card px-5 py-4 shadow-elegant sm:-left-8">
-            <p className="font-display text-4xl font-semibold text-primary">{TOTAL_PROMPTS}</p>
+            <p className="font-display text-4xl font-semibold text-primary">{PROMPT_COUNT_LABEL}</p>
             <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               ready-to-use prompts
             </p>
@@ -184,7 +175,7 @@ function Hero() {
 
 function ProofStrip() {
   const stats = [
-    { n: `${TOTAL_PROMPTS}`, l: "Prompts" },
+    { n: PROMPT_COUNT_LABEL, l: "Prompts" },
     { n: `${PROMPT_CATEGORIES.length}`, l: "Categories" },
     { n: "10+ hrs", l: "Saved each week" },
     { n: "4.9★", l: "Average rating" },
@@ -249,7 +240,7 @@ function Inside() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-primary">What's inside</p>
           <h2 className="mt-5 text-4xl font-medium sm:text-5xl">
-            {TOTAL_PROMPTS} prompts for every part of your business
+            {PROMPT_COUNT_LABEL} prompts for every part of your business
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             Organized by task, so you can find the right prompt in seconds.
@@ -269,7 +260,7 @@ function Inside() {
             </div>
           ))}
           <div className="flex flex-col justify-center bg-primary p-7 text-primary-foreground">
-            <p className="font-display text-5xl font-semibold text-brass">{TOTAL_PROMPTS}</p>
+            <p className="font-display text-5xl font-semibold text-brass">{PROMPT_COUNT_LABEL}</p>
             <p className="mt-2 text-lg font-semibold">prompts total</p>
             <p className="mt-1 text-sm opacity-80">Plus free updates as new AI tools arrive.</p>
           </div>
@@ -311,8 +302,8 @@ function Samples() {
     <section id="samples" className="scroll-mt-20 bg-secondary/60 py-20 md:py-28">
       <Container className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div>
-          <p className="eyebrow text-primary">Free samples</p>
-          <h2 className="mt-5 text-4xl font-medium sm:text-5xl">Try a few before you buy.</h2>
+          <p className="eyebrow text-primary">Sample prompts</p>
+          <h2 className="mt-5 text-4xl font-medium sm:text-5xl">A peek inside the guide.</h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
             Every prompt is built the same way: a role, a clear task, your details in the{" "}
             <span className="rounded bg-brass/25 px-1 font-semibold">[brackets]</span>, and
@@ -486,7 +477,7 @@ function Testimonials() {
 
 function Pricing() {
   const items = [
-    `${TOTAL_PROMPTS} real estate prompts in ${PROMPT_CATEGORIES.length} categories`,
+    `${PROMPT_COUNT_LABEL} real estate prompts in ${PROMPT_CATEGORIES.length} categories`,
     "Printable PDF + editable Google Doc and Notion versions",
     "The AI Setup Cheat Sheet",
     "90-Day Social Calendar",
@@ -518,12 +509,11 @@ function Pricing() {
           <div className="flex items-center justify-between">
             <p className="font-display text-2xl font-semibold">The Ultimate AI Prompt Guide</p>
             <span className="shrink-0 whitespace-nowrap rounded-full bg-brass/25 px-3 py-1 text-xs font-bold uppercase tracking-wider">
-              Launch price
+              One-time
             </span>
           </div>
           <div className="mt-6 flex items-end gap-3">
-            <span className="font-display text-6xl font-semibold text-primary">${PRICE.now}</span>
-            <span className="pb-2 text-xl text-muted-foreground line-through">${PRICE.was}</span>
+            <span className="font-display text-6xl font-semibold text-primary">{PRICE_LABEL}</span>
           </div>
           <p className="mt-1 text-sm text-muted-foreground">One-time payment · USD</p>
           <ul className="mt-8 space-y-3.5">
@@ -539,7 +529,7 @@ function Pricing() {
             Get instant access
           </Button>
           <p className="mt-4 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-            <Clock className="size-3.5" /> Delivered to your inbox in under 60 seconds
+            <Clock className="size-3.5" /> Instant access right after checkout
           </p>
         </div>
       </Container>
@@ -567,11 +557,11 @@ function Faq() {
     },
     {
       q: "How do I receive it?",
-      a: "Right after checkout you'll get an email with download links for the PDF, Google Doc and Notion versions.",
+      a: "Checkout is handled securely by WarriorPlus. Right after payment you'll get instant access to your download page, plus an email receipt with your links.",
     },
     {
       q: "What if it's not for me?",
-      a: "You're covered by a 30-day money-back guarantee. Just reply to your receipt email for a full refund.",
+      a: "You're covered by a 30-day money-back guarantee. Just contact support through WarriorPlus within 30 days for a full refund.",
     },
   ];
   return (
@@ -612,7 +602,7 @@ function FinalCta() {
           </p>
           <Button variant="brass" size="xl" className="relative mt-9" asChild>
             <a href="#pricing">
-              Get the guide — ${PRICE.now}
+              Get the guide — {PRICE_LABEL}
               <ArrowRight />
             </a>
           </Button>
