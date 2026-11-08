@@ -125,9 +125,9 @@ function Hero() {
       <Container className="grid items-center gap-12 pb-16 pt-12 md:pt-20 lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:pb-24">
         <div className="animate-rise">
           <p className="eyebrow text-primary">For real estate agents</p>
-          <h1 className="mt-5 text-5xl font-medium leading-[1.02] sm:text-6xl lg:text-7xl">
+          <h1 className="mt-5 text-5xl font-semibold leading-[1.04] sm:text-6xl lg:text-7xl">
             Write a week of marketing{" "}
-            <em className="font-normal text-primary">before your coffee</em> gets cold.
+            <span className="text-ember">before your coffee</span> gets cold.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
             A <strong className="text-foreground">{PROMPT_COUNT_LABEL} prompt library</strong> built
@@ -212,7 +212,7 @@ function Problem() {
       <Container className="grid gap-12 py-20 md:py-28 lg:grid-cols-2 lg:gap-20">
         <div>
           <p className="eyebrow text-ember">Sound familiar?</p>
-          <h2 className="mt-5 text-4xl font-medium leading-tight sm:text-5xl">
+          <h2 className="mt-5 text-4xl font-semibold leading-tight sm:text-5xl">
             You didn't get into real estate to become a copywriter.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-ink-muted">
@@ -265,7 +265,7 @@ function Different() {
       <Container>
         <div className="mx-auto max-w-3xl text-center">
           <p className="eyebrow text-primary">Why it's different</p>
-          <h2 className="mt-5 text-4xl font-medium sm:text-5xl">
+          <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">
             Not another free “AI prompts” PDF.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
@@ -318,7 +318,7 @@ function Structure() {
       <Container>
         <div className="max-w-2xl">
           <p className="eyebrow text-primary">How every prompt works</p>
-          <h2 className="mt-5 text-4xl font-medium sm:text-5xl">
+          <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">
             The same simple structure, every time.
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
@@ -345,7 +345,7 @@ function Inside() {
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-primary">What's inside</p>
-          <h2 className="mt-5 text-4xl font-medium sm:text-5xl">
+          <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">
             {PROMPT_COUNT_LABEL} prompts for every part of your business
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
@@ -382,7 +382,7 @@ function Highlighted({ text }: { text: string }) {
     <>
       {parts.map((p, i) =>
         p.startsWith("[") ? (
-          <span key={i} className="rounded bg-ember/25 px-1 font-semibold text-accent-foreground">
+          <span key={i} className="rounded bg-ember/15 px-1 font-semibold text-ember">
             {p}
           </span>
         ) : (
@@ -409,7 +409,7 @@ function Samples() {
       <Container className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div>
           <p className="eyebrow text-primary">Sample prompts</p>
-          <h2 className="mt-5 text-4xl font-medium sm:text-5xl">A peek inside the guide.</h2>
+          <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">A peek inside the guide.</h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
             Every prompt is copy-paste ready. Just drop your property or client details into the{" "}
             <span className="rounded bg-ember/25 px-1 font-semibold">[brackets]</span> and you'll
@@ -473,7 +473,7 @@ function WhoFor() {
         />
         <div>
           <p className="eyebrow text-primary">Who it's for</p>
-          <h2 className="mt-5 text-4xl font-medium sm:text-5xl">
+          <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">
             Built for agents, not tech experts.
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
@@ -505,7 +505,7 @@ function Bonuses() {
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="eyebrow text-primary">Free bonuses</p>
-            <h2 className="mt-5 text-4xl font-medium sm:text-5xl">Included at no extra cost</h2>
+            <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">Included at no extra cost</h2>
           </div>
           <p className="max-w-sm text-muted-foreground">
             Everything you need to get set up and stay consistent — yours free with the guide.
@@ -515,7 +515,7 @@ function Bonuses() {
           {BONUSES.map((b) => (
             <div key={b.title} className="relative rounded-3xl border border-border bg-background p-7">
               <div className="flex items-center justify-between">
-                <span className="grid size-11 place-items-center rounded-2xl bg-ember/25 text-accent-foreground">
+                <span className="grid size-11 place-items-center rounded-2xl bg-ember/15 text-ember">
                   <Gift className="size-5" />
                 </span>
                 <span className="text-sm text-muted-foreground">
@@ -556,7 +556,7 @@ function Testimonials() {
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-primary">Agent stories</p>
-          <h2 className="mt-5 text-4xl font-medium sm:text-5xl">Agents are getting hours back</h2>
+          <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">Agents are getting hours back</h2>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {quotes.map((t) => (
@@ -566,7 +566,7 @@ function Testimonials() {
                   <Star key={i} className="size-4 fill-current" />
                 ))}
               </div>
-              <blockquote className="mt-5 flex-1 font-display text-lg leading-relaxed">
+              <blockquote className="mt-5 flex-1 text-lg leading-relaxed">
                 “{t.q}”
               </blockquote>
               <figcaption className="mt-6 border-t border-border pt-5">
@@ -595,7 +595,7 @@ function Pricing() {
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <div>
           <p className="eyebrow text-ember">Get the guide</p>
-          <h2 className="mt-5 text-4xl font-medium leading-tight sm:text-5xl">
+          <h2 className="mt-5 text-4xl font-semibold leading-tight sm:text-5xl">
             One payment. Every prompt. Yours forever.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-ink-muted">
@@ -675,7 +675,7 @@ function Faq() {
       <Container className="max-w-3xl">
         <div className="text-center">
           <p className="eyebrow text-primary">FAQ</p>
-          <h2 className="mt-5 text-4xl font-medium sm:text-5xl">Questions, answered</h2>
+          <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">Questions, answered</h2>
         </div>
         <Accordion type="single" collapsible className="mt-12">
           {faqs.map((f) => (
@@ -700,7 +700,7 @@ function FinalCta() {
       <Container>
         <div className="relative overflow-hidden rounded-[2.5rem] bg-primary px-8 py-16 text-center text-primary-foreground sm:px-16 sm:py-20">
           <div className="absolute -right-24 -top-24 size-72 rounded-full bg-ember/20 blur-3xl" />
-          <h2 className="relative mx-auto max-w-2xl text-4xl font-medium sm:text-5xl">
+          <h2 className="relative mx-auto max-w-2xl text-4xl font-semibold sm:text-5xl">
             Your next listing description is 60 seconds away.
           </h2>
           <p className="relative mx-auto mt-5 max-w-lg text-lg opacity-85">
