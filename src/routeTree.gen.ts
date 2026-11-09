@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Upsell1RouteImport } from './routes/upsell-1'
+import { Route as Upsell2RouteImport } from './routes/upsell-2'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const Upsell1Route = Upsell1RouteImport.update({
   path: '/upsell-1',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Upsell2Route = Upsell2RouteImport.update({
+  id: '/upsell-2',
+  path: '/upsell-2',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/upsell-1': typeof Upsell1Route
+  '/upsell-2': typeof Upsell2Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/upsell-1': typeof Upsell1Route
+  '/upsell-2': typeof Upsell2Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/upsell-1': typeof Upsell1Route
+  '/upsell-2': typeof Upsell2Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/upsell-1'
+  fullPaths: '/' | '/upsell-1' | '/upsell-2'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/upsell-1'
-  id: '__root__' | '/' | '/upsell-1'
+  to: '/' | '/upsell-1' | '/upsell-2'
+  id: '__root__' | '/' | '/upsell-1' | '/upsell-2'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   Upsell1Route: typeof Upsell1Route
+  Upsell2Route: typeof Upsell2Route
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Upsell1RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/upsell-2': {
+      id: '/upsell-2'
+      path: '/upsell-2'
+      fullPath: '/upsell-2'
+      preLoaderRoute: typeof Upsell2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   Upsell1Route: Upsell1Route,
+  Upsell2Route: Upsell2Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
