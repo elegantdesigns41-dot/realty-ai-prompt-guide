@@ -1,17 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import type { ReactNode } from "react";
-import { toast } from "sonner";
-import {
-  ArrowRight,
-  Check,
-  Clapperboard,
-  LayoutTemplate,
-  Mail,
-  CircleCheck,
-  ClipboardPaste,
-} from "lucide-react";
+import { Check, Clapperboard, LayoutTemplate, Mail, ClipboardPaste } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { BuyBlock as FunnelBuyBlock, Container, FunnelFooter, OrderBar, goOrNotify } from "@/components/funnel";
 import {
   NEWSLETTER_TEMPLATE_COUNT,
   SEQUENCE_EMAIL_COUNT,
@@ -51,34 +41,15 @@ const MODULE_ICONS: Record<string, typeof LayoutTemplate> = {
   email: Mail,
 };
 
-function handleBuy() {
-  if (VAULT_BUY_URL) {
-    window.location.href = VAULT_BUY_URL;
-    return;
-  }
-  toast("Checkout is almost ready", {
-    description: "Secure payment is being connected. Check back very soon!",
-  });
-}
-
-function handleDecline() {
-  if (VAULT_DECLINE_URL) {
-    window.location.href = VAULT_DECLINE_URL;
-    return;
-  }
-  toast("Your guide is on its way", {
-    description: "Check your inbox for your download details.",
-  });
-}
-
-function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <div className={`mx-auto w-full max-w-6xl px-5 sm:px-8 ${className}`}>{children}</div>;
-}
+const handleBuy = () =>
+  goOrNotify(VAULT_BUY_URL, "Checkout is almost ready", "Secure payment is being connected. Check back very soon!");
+const handleDecline = () =>
+  goOrNotify(VAULT_DECLINE_URL, "Your guide is on its way", "Check your inbox for your download details.");
 
 function UpsellPage() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
-      <OrderBar />
+      <OrderBar current={1} />
       <main>
         <Hero />
         <Gap />
@@ -88,53 +59,20 @@ function UpsellPage() {
         <Pairing />
         <Decision />
       </main>
-      <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} The Ultimate AI Prompt Guide for Real Estate Agents
-      </footer>
-    </div>
-  );
-}
-
-function OrderBar() {
-  return (
-    <div className="bg-ink text-ink-foreground">
-      <Container className="flex flex-col items-center justify-between gap-3 py-3 text-sm sm:flex-row">
-        <p className="flex items-center gap-2">
-          <CircleCheck className="size-4 text-ember" />
-          <span>
-            <strong>Your guide is confirmed.</strong>{" "}
-            <span className="text-ink-muted">Please don't close this page yet.</span>
-          </span>
-        </p>
-        <ol className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest">
-          <li className="text-ink-muted">1 · Guide</li>
-          <li className="h-px w-6 bg-ink-foreground/30" aria-hidden />
-          <li className="text-ember">2 · Upgrade</li>
-          <li className="h-px w-6 bg-ink-foreground/30" aria-hidden />
-          <li className="text-ink-muted">3 · Access</li>
-        </ol>
-      </Container>
+      <FunnelFooter />
     </div>
   );
 }
 
 function BuyBlock({ dark = false }: { dark?: boolean }) {
   return (
-    <div className="flex flex-col items-start gap-4">
-      <Button variant="ember" size="xl" onClick={handleBuy} className="h-auto whitespace-normal py-4 text-left">
-        Yes! Add the Vault to my order — {VAULT_PRICE_LABEL}
-        <ArrowRight />
-      </Button>
-      <button
-        type="button"
-        onClick={handleDecline}
-        className={`text-sm underline underline-offset-4 ${
-          dark ? "text-ink-muted hover:text-ink-foreground" : "text-muted-foreground hover:text-foreground"
-        }`}
-      >
-        No thanks — I'll write and design my own marketing from scratch.
-      </button>
-    </div>
+    <FunnelBuyBlock
+      dark={dark}
+      label={`Yes! Add the Vault to my order — ${VAULT_PRICE_LABEL}`}
+      declineLabel="No thanks — I'll write and design my own marketing from scratch."
+      onBuy={handleBuy}
+      onDecline={handleDecline}
+    />
   );
 }
 
