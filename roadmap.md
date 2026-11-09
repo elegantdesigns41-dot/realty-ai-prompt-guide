@@ -7,4 +7,7 @@
 - [x] Build upsell #1 page for the Copy & Paste Marketing Vault (/upsell-1)
 - [ ] Set the real Vault price (placeholder $27 — waiting on the user)
 - [ ] Connect the Vault "Yes" and "No thanks" buttons to WarriorPlus upsell links (waiting on the links)
+- [x] Build upsell #2 page for Custom AI Chatbot Checklists (/upsell-2)
+- [ ] Set the real Chatbot Checklists price (placeholder $37) and confirm the checklist contents (waiting on the user)
+- [ ] Connect the Chatbot "Yes" and "No thanks" buttons to WarriorPlus upsell links (waiting on the links)
 - [ ] Connect buy buttons to the WarriorPlus checkout link (waiting on the link from the user)
