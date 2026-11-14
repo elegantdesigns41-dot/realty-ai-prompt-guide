@@ -41,7 +41,7 @@ Property details:
 - Key features: [LIST 3-5 STANDOUT FEATURES]
 - Recent updates: [LIST ANY]
 - Nearby: [SCHOOLS, PARKS, COMMUTE POINTS]`,
-    tip: "Always run the output through a quick fair housing check afterward — see prompt #10 in the guide.",
+    tip: "Always run the output through a quick fair housing check afterward.",
   },
   {
     tab: "Social",
