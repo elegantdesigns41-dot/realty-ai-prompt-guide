@@ -13,6 +13,22 @@ describe("Prompt guide contents", () => {
     expect(PROMPT_COUNT_LABEL).toBe("300+");
   });
 
+  it("shows the category cards with the agreed names and counts", () => {
+    expect(PROMPT_CATEGORIES.map((c) => [c.title, c.count])).toEqual([
+      ["Listing creation", 30],
+      ["Social media marketing", 42],
+      ["Lead generation", 27],
+      ["Email marketing", 26],
+      ["Client communication", 40],
+      ["Market research", 25],
+      ["Open houses", 19],
+      ["Buyer agent toolkit", 30],
+      ["Seller agent toolkit", 22],
+      ["Productivity", 16],
+      ["Bonus AI prompts", 28],
+    ]);
+  });
+
   it("sells for $12.95", () => {
     expect(PRICE_USD).toBe(12.95);
     expect(PRICE_LABEL).toBe("$12.95");

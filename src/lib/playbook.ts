@@ -5,17 +5,17 @@ export type PromptCategory = {
 };
 
 export const PROMPT_CATEGORIES: PromptCategory[] = [
-  { title: "Listing descriptions", count: 45, blurb: "MLS copy by property type — condos, luxury, starter homes, land and more." },
-  { title: "Social media content", count: 50, blurb: "Reels scripts, carousels, captions and 30-day content calendars." },
-  { title: "Lead generation", count: 40, blurb: "Expired and FSBO outreach, farming letters, and ad copy that converts." },
-  { title: "Email & SMS follow-up", count: 40, blurb: "Nurture sequences that keep you top of mind without sounding robotic." },
-  { title: "Buyer scripts", count: 30, blurb: "Consultation scripts, neighborhood guides and offer-strategy explainers." },
-  { title: "Seller scripts & presentations", count: 30, blurb: "Listing presentations, pricing talks and win-the-listing scripts." },
-  { title: "Negotiation & objections", count: 25, blurb: "Negotiation language and calm answers to commission, price and timing pushback." },
-  { title: "Market reports & newsletters", count: 25, blurb: "Turn raw stats into newsletters and updates clients actually read." },
-  { title: "Open house promotion", count: 20, blurb: "Invites, promo posts, sign-in follow-ups and client events." },
-  { title: "Client care & referrals", count: 20, blurb: "Closing gifts, anniversaries and review requests that earn referrals." },
-  { title: "Business & productivity", count: 15, blurb: "Business plans, SOPs, hiring posts and weekly time-blocking." },
+  { title: "Listing creation", count: 30, blurb: "MLS copy by property type — condos, luxury, starter homes, land and more." },
+  { title: "Social media marketing", count: 42, blurb: "Reels scripts, carousels, captions and 30-day content calendars." },
+  { title: "Lead generation", count: 27, blurb: "Expired and FSBO outreach, farming letters, and ad copy that converts." },
+  { title: "Email marketing", count: 26, blurb: "Nurture sequences that keep you top of mind without sounding robotic." },
+  { title: "Client communication", count: 40, blurb: "Follow-ups, check-ins and status updates that keep every client in the loop." },
+  { title: "Market research", count: 25, blurb: "Turn raw stats into neighborhood guides, newsletters and market updates clients actually read." },
+  { title: "Open houses", count: 19, blurb: "Invites, promo posts, sign-in follow-ups and client events." },
+  { title: "Buyer agent toolkit", count: 30, blurb: "Consultation scripts, buyer consultations and offer-strategy explainers." },
+  { title: "Seller agent toolkit", count: 22, blurb: "Listing presentations, pricing talks and win-the-listing scripts." },
+  { title: "Productivity", count: 16, blurb: "Business plans, SOPs, hiring posts and weekly time-blocking." },
+  { title: "Bonus AI prompts", count: 28, blurb: "Extra prompts for the odd jobs in between — ads, review requests, video captions and more." },
 ];
 
 export const TOTAL_PROMPTS = PROMPT_CATEGORIES.reduce((sum, c) => sum + c.count, 0);
