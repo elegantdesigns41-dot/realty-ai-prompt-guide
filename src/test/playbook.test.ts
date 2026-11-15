@@ -34,10 +34,12 @@ describe("Prompt guide contents", () => {
     expect(PRICE_LABEL).toBe("$12.95");
   });
 
-  it("includes the image and blog prompt packs among the free bonuses", () => {
-    const titles = BONUSES.map((b) => b.title);
-    expect(titles).toContain("Midjourney Prompts");
-    expect(titles).toContain("DALL·E Prompts");
-    expect(titles).toContain("Blog Writing Prompts");
+  it("lists only the three prompt packs among the free bonuses, with no prices shown", () => {
+    expect(BONUSES.map((b) => b.title)).toEqual([
+      "Midjourney Prompts",
+      "DALL·E Prompts",
+      "Blog Writing Prompts",
+    ]);
+    expect(BONUSES.every((b) => !("value" in b))).toBe(true);
   });
 });

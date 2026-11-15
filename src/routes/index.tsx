@@ -518,21 +518,15 @@ function Bonuses() {
             <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">Included at no extra cost</h2>
           </div>
           <p className="max-w-sm text-muted-foreground">
-            Everything you need to get set up and stay consistent — yours free with the guide.
+            Three extra prompt packs that round out the guide — yours free with it.
           </p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {BONUSES.map((b) => (
             <div key={b.title} className="relative rounded-3xl border border-border bg-background p-7">
-              <div className="flex items-center justify-between">
-                <span className="grid size-11 place-items-center rounded-2xl bg-ember/15 text-ember">
-                  <Gift className="size-5" />
-                </span>
-                <span className="text-sm text-muted-foreground">
-                  Value <span className="line-through">{b.value}</span>{" "}
-                  <span className="font-bold text-primary">FREE</span>
-                </span>
-              </div>
+              <span className="grid size-11 place-items-center rounded-2xl bg-ember/15 text-ember">
+                <Gift className="size-5" />
+              </span>
               <h3 className="mt-6 text-xl font-semibold">{b.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.desc}</p>
             </div>
@@ -595,9 +589,9 @@ function Pricing() {
   const items = [
     `${PROMPT_COUNT_LABEL} real estate prompts in ${PROMPT_CATEGORIES.length} categories`,
     "Printable PDF + editable Google Doc and Notion versions",
-    "The AI Setup Cheat Sheet",
-    "90-Day Social Calendar",
-    "Fair Housing Copy Checklist",
+    "Midjourney prompts",
+    "DALL·E prompts",
+    "Blog writing prompts",
     "Lifetime access and free updates",
   ];
   return (
@@ -665,11 +659,11 @@ function Faq() {
     },
     {
       q: "Will my listings sound like everyone else's?",
-      a: "No. The prompts ask the AI to use your details, your market and your voice, and the setup cheat sheet shows you how to teach it your style once.",
+      a: "No. The prompts ask the AI to use your details, your market and your voice, so the output reads like you wrote it — not like a template.",
     },
     {
       q: "Is AI-written copy compliant?",
-      a: "Always review before publishing. The included Fair Housing checklist helps you catch risky language in listings and ads before they go live.",
+      a: "Always review before publishing. The prompts tell the AI to describe the property rather than the buyer, but you should still read every output yourself before it goes live.",
     },
     {
       q: "How do I receive it?",
