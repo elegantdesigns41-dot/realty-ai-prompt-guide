@@ -16,16 +16,16 @@ describe("Prompt guide contents", () => {
   it("shows the category cards with the agreed names and counts", () => {
     expect(PROMPT_CATEGORIES.map((c) => [c.title, c.count])).toEqual([
       ["Listing creation", 30],
-      ["Social media marketing", 42],
-      ["Lead generation", 27],
-      ["Email marketing", 26],
+      ["Social media marketing", 33],
+      ["Lead generation", 35],
+      ["Email marketing", 30],
       ["Client communication", 40],
       ["Market research", 25],
-      ["Open houses", 19],
-      ["Buyer agent toolkit", 30],
-      ["Seller agent toolkit", 22],
-      ["Productivity", 16],
-      ["Bonus AI prompts", 28],
+      ["Open houses", 20],
+      ["Buyer agent toolkit", 34],
+      ["Seller agent toolkit", 35],
+      ["Productivity", 25],
+      ["Bonus AI prompts", 22],
     ]);
   });
 
