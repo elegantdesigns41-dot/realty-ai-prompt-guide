@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { PRICE_LABEL, PRICE_USD, PROMPT_CATEGORIES, PROMPT_COUNT_LABEL, TOTAL_PROMPTS } from "@/lib/playbook";
+import { BONUSES, PRICE_LABEL, PRICE_USD, PROMPT_CATEGORIES, PROMPT_COUNT_LABEL, TOTAL_PROMPTS } from "@/lib/playbook";
 
 describe("Prompt guide contents", () => {
   it("contains at least 300 prompts across its categories", () => {
@@ -32,5 +32,12 @@ describe("Prompt guide contents", () => {
   it("sells for $12.95", () => {
     expect(PRICE_USD).toBe(12.95);
     expect(PRICE_LABEL).toBe("$12.95");
+  });
+
+  it("includes the image and blog prompt packs among the free bonuses", () => {
+    const titles = BONUSES.map((b) => b.title);
+    expect(titles).toContain("Midjourney Prompts");
+    expect(titles).toContain("DALL·E Prompts");
+    expect(titles).toContain("Blog Writing Prompts");
   });
 });

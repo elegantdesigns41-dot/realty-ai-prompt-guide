@@ -74,6 +74,9 @@ export const BONUSES = [
   { title: "The AI Setup Cheat Sheet", value: "$27", desc: "Configure ChatGPT, Claude or Gemini with your brand voice in 10 minutes." },
   { title: "90-Day Social Calendar", value: "$37", desc: "A done-for-you posting plan you fill with the guide's prompts." },
   { title: "Fair Housing Copy Checklist", value: "$19", desc: "Keep every AI-written listing and ad compliant before it goes live." },
+  { title: "Midjourney Prompts", value: "$27", desc: "Prompt formulas for listing hero shots, neighborhood mood boards and branded social visuals." },
+  { title: "DALL·E Prompts", value: "$27", desc: "Image prompts that run inside ChatGPT — announcement graphics, seasonal posts and listing teasers." },
+  { title: "Blog Writing Prompts", value: "$37", desc: "Turn a listing, a market stat or a neighborhood walk into a publishable blog post in one pass." },
 ];
 
 export const PRICE_USD = 12.95;
