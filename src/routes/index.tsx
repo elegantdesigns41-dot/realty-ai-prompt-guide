@@ -588,11 +588,10 @@ function Testimonials() {
 function Pricing() {
   const items = [
     `${PROMPT_COUNT_LABEL} real estate prompts in ${PROMPT_CATEGORIES.length} categories`,
-    "Printable PDF + editable Google Doc and Notion versions",
+    "Printable PDF",
     "Midjourney prompts",
     "DALL·E prompts",
     "Blog writing prompts",
-    "Lifetime access and free updates",
   ];
   return (
     <section id="pricing" className="scroll-mt-20 bg-ink-gradient py-20 text-ink-foreground md:py-28">
