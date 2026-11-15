@@ -600,7 +600,7 @@ function Pricing() {
         <div>
           <p className="eyebrow text-ember">Get the guide</p>
           <h2 className="mt-5 text-4xl font-semibold leading-tight sm:text-5xl">
-            One payment. Every prompt. Yours forever.
+            One payment. Every prompt.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-ink-muted">
             Less than the cost of one lunch with a client — and it pays for itself the first time it
