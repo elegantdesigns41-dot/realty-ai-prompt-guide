@@ -10,7 +10,7 @@ export type VaultModule = {
 export const VAULT_MODULES: VaultModule[] = [
   {
     key: "canva",
-    count: 12,
+    count: 13,
     unit: "blueprints",
     title: "Canva template blueprints",
     blurb: "Open Canva, follow the blueprint, paste the copy. Done.",
@@ -18,7 +18,7 @@ export const VAULT_MODULES: VaultModule[] = [
   },
   {
     key: "video",
-    count: 12,
+    count: 15,
     unit: "scripts",
     title: "Video scripts",
     blurb: "Know exactly what to say, show and film before you hit record.",

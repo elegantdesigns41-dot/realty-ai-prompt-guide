@@ -9,12 +9,12 @@ describe("Copy & Paste Marketing Vault contents", () => {
     expect(VAULT_MODULES).toHaveLength(3);
   });
 
-  it("includes 12 Canva template blueprints", () => {
-    expect(mod("canva").count).toBe(12);
+  it("includes 13 Canva template blueprints", () => {
+    expect(mod("canva").count).toBe(13);
   });
 
-  it("includes 12 video scripts", () => {
-    expect(mod("video").count).toBe(12);
+  it("includes 15 video scripts", () => {
+    expect(mod("video").count).toBe(15);
   });
 
   it("includes 6 email packs", () => {

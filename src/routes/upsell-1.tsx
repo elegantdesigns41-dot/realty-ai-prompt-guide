@@ -19,7 +19,7 @@ export const Route = createFileRoute("/upsell-1")({
       {
         name: "description",
         content:
-          "12 Canva template blueprints, 12 video scripts and 6 email packs for real estate agents. Finished marketing you can copy, paste and post.",
+          "13 Canva template blueprints, 15 video scripts and 6 email packs for real estate agents. Finished marketing you can copy, paste and post.",
       },
       { property: "og:title", content: "The Copy & Paste Marketing Vault for Real Estate Agents" },
       {
@@ -93,8 +93,8 @@ function Hero() {
           </p>
           <ul className="mt-7 space-y-3">
             {[
-              "12 Canva template blueprints",
-              "12 short video scripts",
+              "13 Canva template blueprints",
+              "15 short video scripts",
               `6 email packs — ${SEQUENCE_EMAIL_COUNT} sequence emails plus a newsletter template`,
             ].map((t) => (
               <li key={t} className="flex items-start gap-3">

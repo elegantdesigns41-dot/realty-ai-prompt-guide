@@ -154,8 +154,8 @@ function Modules() {
 
 function Compare() {
   const rows = [
-    { item: "Canva template blueprints", vault: "12", lite: "13" },
-    { item: "Video scripts", vault: "12", lite: "—" },
+    { item: "Canva template blueprints", vault: "13", lite: "13" },
+    { item: "Video scripts", vault: "15", lite: "—" },
     { item: "Email packs", vault: "6 packs (21 emails + newsletter)", lite: "2 starter packs" },
     { item: "Design worksheets", vault: "—", lite: "2" },
   ];
