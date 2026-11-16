@@ -29,14 +29,38 @@ export const CHATBOT_CHECKLISTS: Checklist[] = [
   {
     title: "Test it before you rely on it",
     blurb: "Catch wrong or made-up answers early.",
-    items: ["Ask it your real client questions", "Check every answer against your files", "Tighten the instructions where it slips"],
+    items: ["Run the 30 test questions", "Check every answer against your files", "Tighten the instructions where it slips"],
   },
   {
     title: "Keep it up to date",
     blurb: "A quick routine so it never goes stale.",
     items: ["Swap in fresh market summaries", "Add new questions clients ask", "Re-test after every change"],
   },
+  {
+    title: "Put it to work",
+    blurb: "Start using it in your day-to-day, safely.",
+    items: ["Answer your own client questions first", "Review every draft before you send", "Share it with clients when you're confident"],
+  },
 ];
+
+/** Ready-to-use instruction templates — drop in your details and paste into your custom GPT. */
+export const INSTRUCTION_TEMPLATES = [
+  {
+    title: "Buyer question assistant",
+    blurb: "Answers common buyer questions from your FAQs and process documents.",
+  },
+  {
+    title: "Seller question assistant",
+    blurb: "Walks sellers through your process, pricing approach and what to expect.",
+  },
+  {
+    title: "Neighborhood expert",
+    blurb: "Draws on your own neighborhood guides and market summaries.",
+  },
+];
+
+/** Questions to run against your chatbot before you rely on it. */
+export const TEST_QUESTION_COUNT = 30;
 
 export const CAN_DO = [
   "Draft replies in your tone, using the files you've loaded",

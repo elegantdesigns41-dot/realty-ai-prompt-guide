@@ -9,6 +9,8 @@ import {
   CHATBOT_CHECKLISTS,
   CHATBOT_DECLINE_URL,
   CHATBOT_PRICE_LABEL,
+  INSTRUCTION_TEMPLATES,
+  TEST_QUESTION_COUNT,
 } from "@/lib/chatbot";
 import chatbotMockup from "@/assets/chatbot-mockup.jpg";
 
@@ -19,7 +21,7 @@ export const Route = createFileRoute("/upsell-2")({
       {
         name: "description",
         content:
-          "Step-by-step checklists to build your own custom AI chatbot, loaded with your market summaries, neighborhood guides and FAQs.",
+          "7 step-by-step checklists, 3 instruction templates and 30 test questions to build your own custom AI chatbot, loaded with your market summaries, neighborhood guides and FAQs.",
       },
       { property: "og:title", content: "Custom AI Chatbot Checklists for Real Estate Agents" },
       {
@@ -60,6 +62,7 @@ function UpsellTwoPage() {
         <Hero />
         <LoadedWith />
         <Checklists />
+        <Templates />
         <CanCant />
         <MlsWarning />
         <Decision />
@@ -86,9 +89,9 @@ function Hero() {
           </p>
           <ul className="mt-7 space-y-3">
             {[
-              "A working chatbot of your own",
-              "A repeatable process to build and update it",
-              "Plain-English checklists, step by step",
+              "7 step-by-step checklists",
+              "3 ready-to-use instruction templates",
+              "30 test questions to check its answers",
             ].map((t) => (
               <li key={t} className="flex items-start gap-3">
                 <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
@@ -154,7 +157,7 @@ function Checklists() {
           <p className="eyebrow text-primary">What's inside</p>
           <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">From blank page to working chatbot.</h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Six checklists, in the order you'll use them.
+            Seven checklists, in the order you'll use them.
           </p>
         </div>
         <ol className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -179,6 +182,45 @@ function Checklists() {
             </li>
           ))}
         </ol>
+      </Container>
+    </section>
+  );
+}
+
+function Templates() {
+  return (
+    <section className="border-t border-border bg-card py-20 md:py-28">
+      <Container>
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="eyebrow text-primary">Plus</p>
+          <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">
+            3 instruction templates. 30 test questions.
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground">
+            Don't start from a blank page — start from a template, then prove it works.
+          </p>
+        </div>
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          {INSTRUCTION_TEMPLATES.map((t) => (
+            <article
+              key={t.title}
+              className="flex flex-col rounded-3xl border border-border bg-background p-8 shadow-elegant"
+            >
+              <span className="grid size-12 place-items-center rounded-2xl bg-primary text-ember">
+                <FileText className="size-5" />
+              </span>
+              <h3 className="mt-6 text-xl font-semibold">{t.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{t.blurb}</p>
+            </article>
+          ))}
+        </div>
+        <div className="mx-auto mt-10 flex max-w-3xl items-center gap-6 rounded-3xl bg-primary p-8 text-primary-foreground shadow-elegant">
+          <p className="font-display text-6xl font-semibold text-ember">{TEST_QUESTION_COUNT}</p>
+          <p className="text-lg leading-relaxed">
+            test questions to run against your chatbot before you rely on it — so wrong or made-up
+            answers never reach a client.
+          </p>
+        </div>
       </Container>
     </section>
   );
@@ -288,11 +330,19 @@ function Decision() {
           <p className="text-xs font-bold uppercase tracking-widest text-ember">You'll get</p>
           <ul className="mt-6 space-y-4">
             {CHATBOT_CHECKLISTS.map((c, i) => (
-              <li key={c.title} className="flex items-baseline gap-4 border-b border-ink-foreground/10 pb-4 last:border-0 last:pb-0">
+              <li key={c.title} className="flex items-baseline gap-4 border-b border-ink-foreground/10 pb-4">
                 <span className="font-display text-lg font-semibold text-ember">{i + 1}</span>
                 <span>{c.title}</span>
               </li>
             ))}
+            <li className="flex items-baseline justify-between gap-4 border-b border-ink-foreground/10 pb-4">
+              <span>Instruction templates</span>
+              <span className="font-display text-lg font-semibold text-ember">{INSTRUCTION_TEMPLATES.length}</span>
+            </li>
+            <li className="flex items-baseline justify-between gap-4">
+              <span>Test questions</span>
+              <span className="font-display text-lg font-semibold text-ember">{TEST_QUESTION_COUNT}</span>
+            </li>
           </ul>
           <div className="mt-8 flex items-baseline justify-between border-t border-ink-foreground/20 pt-6">
             <span className="text-ink-muted">One payment</span>
