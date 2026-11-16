@@ -11,3 +11,6 @@
 - [ ] Set the real Chatbot Checklists price (placeholder $37) and confirm the checklist contents (waiting on the user)
 - [ ] Connect the Chatbot "Yes" and "No thanks" buttons to WarriorPlus upsell links (waiting on the links)
 - [ ] Connect buy buttons to the WarriorPlus checkout link (waiting on the link from the user)
+- [x] Build downsell page for Marketing Vault Lite (/downsell-1)
+- [ ] Set the real Vault Lite price (placeholder $17 — waiting on the user)
+- [ ] Connect the Vault Lite "Yes" and "No thanks" buttons to WarriorPlus downsell links (waiting on the links)
