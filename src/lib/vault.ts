@@ -53,5 +53,5 @@ export const VAULT_PRICE_LABEL = `$${VAULT_PRICE_USD}`;
  * WarriorPlus upsell links (from the product's WarriorPlus dashboard).
  * Leave empty until the real links are available; the buttons then show a notice.
  */
-export const VAULT_BUY_URL = "";
+export const VAULT_BUY_URL = "https://warriorplus.com/o2/buy/v19ymw/rdw2pv/x569q2";
 export const VAULT_DECLINE_URL = "";

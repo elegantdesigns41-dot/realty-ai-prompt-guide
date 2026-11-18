@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 
-import { NEWSLETTER_TEMPLATE_COUNT, SEQUENCE_EMAIL_COUNT, VAULT_MODULES } from "@/lib/vault";
+import {
+  NEWSLETTER_TEMPLATE_COUNT,
+  SEQUENCE_EMAIL_COUNT,
+  VAULT_BUY_URL,
+  VAULT_MODULES,
+} from "@/lib/vault";
 
 const mod = (key: string) => VAULT_MODULES.find((m) => m.key === key)!;
 
@@ -25,5 +30,9 @@ describe("Copy & Paste Marketing Vault contents", () => {
   it("has 21 sequence emails plus one newsletter template", () => {
     expect(SEQUENCE_EMAIL_COUNT).toBe(21);
     expect(NEWSLETTER_TEMPLATE_COUNT).toBe(1);
+  });
+
+  it("sends the Yes button to the WarriorPlus vault checkout", () => {
+    expect(VAULT_BUY_URL).toBe("https://warriorplus.com/o2/buy/v19ymw/rdw2pv/x569q2");
   });
 });
