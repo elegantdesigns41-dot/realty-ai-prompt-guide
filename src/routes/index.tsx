@@ -52,6 +52,7 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "product" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    scripts: [{ src: "https://warriorplus.com/o2/js/s4zkjk", defer: true }],
   }),
   component: SalesPage,
 });
