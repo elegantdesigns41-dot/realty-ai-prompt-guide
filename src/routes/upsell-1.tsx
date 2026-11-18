@@ -37,6 +37,7 @@ export const Route = createFileRoute("/upsell-1")({
       { name: "twitter:card", content: "summary_large_image" },
       { name: "robots", content: "noindex, nofollow" },
     ],
+    scripts: [{ src: "https://warriorplus.com/o2/js/rdw2pv", defer: true }],
   }),
   component: UpsellPage,
 });
