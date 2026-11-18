@@ -12,7 +12,7 @@
 - [ ] Set the real Vault Lite price (placeholder $17 — waiting on the user)
 - [x] Connect main page buy buttons to the WarriorPlus checkout link
 - [x] Link the funnel pages: main → upsell-1 → upsell-2 → downsell-1 (decline links + order bar steps)
-- [ ] Connect the Vault "Yes" button to its WarriorPlus upsell link (waiting on the link)
+- [x] Connect the Vault "Yes" button to its WarriorPlus upsell link
 - [ ] Connect the Chatbot "Yes" button to its WarriorPlus upsell link (waiting on the link)
 - [ ] Connect the Vault Lite "Yes" button to its WarriorPlus downsell link (waiting on the link)
 - [ ] Add a final access/thank-you page for after the downsell (downsell "No thanks" still shows a notice)
