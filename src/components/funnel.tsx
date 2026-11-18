@@ -80,6 +80,7 @@ export function BuyBlock({
   onBuy,
   onDecline,
   declineTo,
+  declineUrl,
   dark = false,
 }: {
   label: string;
@@ -88,6 +89,8 @@ export function BuyBlock({
   onDecline?: () => void;
   /** When set, the decline link goes to this funnel page instead of firing `onDecline`. */
   declineTo?: FunnelRoute | null;
+  /** When set, the decline link opens this external URL (e.g. the WarriorPlus no-thanks page). */
+  declineUrl?: string;
   dark?: boolean;
 }) {
   const declineClass = `text-sm underline underline-offset-4 ${
