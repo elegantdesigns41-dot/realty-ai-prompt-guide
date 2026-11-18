@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { BONUSES, PRICE_LABEL, PRICE_USD, PROMPT_CATEGORIES, PROMPT_COUNT_LABEL, TOTAL_PROMPTS } from "@/lib/playbook";
+import { BONUSES, PRICE_LABEL, PRICE_USD, PROMPT_CATEGORIES, PROMPT_COUNT_LABEL, TOTAL_PROMPTS, WARRIORPLUS_BUY_URL } from "@/lib/playbook";
 
 describe("Prompt guide contents", () => {
   it("contains at least 300 prompts across its categories", () => {
@@ -32,6 +32,10 @@ describe("Prompt guide contents", () => {
   it("sells for $12.95", () => {
     expect(PRICE_USD).toBe(12.95);
     expect(PRICE_LABEL).toBe("$12.95");
+  });
+
+  it("sends buyers to the WarriorPlus checkout", () => {
+    expect(WARRIORPLUS_BUY_URL).toBe("https://warriorplus.com/o2/buy/v19ymw/s4zkjk/q66n51");
   });
 
   it("lists only the three prompt packs among the free bonuses, with no prices shown", () => {

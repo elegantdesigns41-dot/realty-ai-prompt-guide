@@ -114,7 +114,7 @@ function Nav() {
           <a href="#faq" className="hover:text-foreground">FAQ</a>
         </nav>
         <Button variant="ink" size="sm" className="rounded-full px-5" asChild>
-          <a href="#pricing">Get the guide</a>
+          <a href={WARRIORPLUS_BUY_URL}>Get the guide</a>
         </Button>
       </Container>
     </header>
@@ -139,7 +139,7 @@ function Hero() {
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
             <Button variant="ember" size="xl" asChild>
-              <a href="#pricing">
+              <a href={WARRIORPLUS_BUY_URL}>
                 Get instant access — {PRICE_LABEL}
                 <ArrowRight />
               </a>
@@ -711,7 +711,7 @@ function FinalCta() {
             Join the agents who stopped writing from scratch.
           </p>
           <Button variant="ember" size="xl" className="relative mt-9" asChild>
-            <a href="#pricing">
+            <a href={WARRIORPLUS_BUY_URL}>
               Get the guide — {PRICE_LABEL}
               <ArrowRight />
             </a>

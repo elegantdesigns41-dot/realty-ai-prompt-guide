@@ -86,4 +86,4 @@ export const PROMPT_COUNT_LABEL = "300+";
  * WarriorPlus buy-button link (from the product's WarriorPlus dashboard).
  * Leave empty until the real link is available; the buy button then shows a notice.
  */
-export const WARRIORPLUS_BUY_URL = "";
+export const WARRIORPLUS_BUY_URL = "https://warriorplus.com/o2/buy/v19ymw/s4zkjk/q66n51";
