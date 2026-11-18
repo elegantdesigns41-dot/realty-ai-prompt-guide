@@ -28,3 +28,13 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- The funnel has one order: `/` → `/upsell-1` → `/upsell-2` → `/downsell-1`. Keep
+  that chain in `NEXT_FUNNEL_ROUTE` and `FUNNEL_ROUTES` in `src/components/funnel.tsx`
+  and let pages read from it, so changing the order is a one-place edit.
+  Why: the pages must stay in step with each other and with the tests.
+- Checkout URLs stay as empty string constants in `src/lib/*` until the real
+  WarriorPlus links arrive; an empty URL makes the button show a notice instead
+  of sending the buyer nowhere. Why: no dead links in a live funnel.

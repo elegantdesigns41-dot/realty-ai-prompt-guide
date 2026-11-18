@@ -46,7 +46,7 @@ const handleDecline = () =>
 function DownsellPage() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
-      <OrderBar current={1} />
+      <OrderBar current={3} />
       <main>
         <Hero />
         <Modules />

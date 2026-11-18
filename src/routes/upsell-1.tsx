@@ -1,12 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Check, Clapperboard, LayoutTemplate, Mail, ClipboardPaste } from "lucide-react";
 
-import { BuyBlock as FunnelBuyBlock, Container, FunnelFooter, OrderBar, goOrNotify } from "@/components/funnel";
+import {
+  BuyBlock as FunnelBuyBlock,
+  Container,
+  FunnelFooter,
+  NEXT_FUNNEL_ROUTE,
+  OrderBar,
+  goOrNotify,
+} from "@/components/funnel";
 import {
   NEWSLETTER_TEMPLATE_COUNT,
   SEQUENCE_EMAIL_COUNT,
   VAULT_BUY_URL,
-  VAULT_DECLINE_URL,
   VAULT_MODULES,
   VAULT_PRICE_LABEL,
 } from "@/lib/vault";
@@ -43,8 +49,6 @@ const MODULE_ICONS: Record<string, typeof LayoutTemplate> = {
 
 const handleBuy = () =>
   goOrNotify(VAULT_BUY_URL, "Checkout is almost ready", "Secure payment is being connected. Check back very soon!");
-const handleDecline = () =>
-  goOrNotify(VAULT_DECLINE_URL, "Your guide is on its way", "Check your inbox for your download details.");
 
 function UpsellPage() {
   return (
@@ -71,7 +75,7 @@ function BuyBlock({ dark = false }: { dark?: boolean }) {
       label={`Yes! Add the Vault to my order — ${VAULT_PRICE_LABEL}`}
       declineLabel="No thanks — I'll write and design my own marketing from scratch."
       onBuy={handleBuy}
-      onDecline={handleDecline}
+      declineTo={NEXT_FUNNEL_ROUTE["/upsell-1"]}
     />
   );
 }

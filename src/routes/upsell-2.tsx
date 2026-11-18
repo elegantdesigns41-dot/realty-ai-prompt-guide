@@ -1,13 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Check, FileText, Info, ListChecks, ShieldAlert, X } from "lucide-react";
 
-import { BuyBlock, Container, FunnelFooter, OrderBar, goOrNotify } from "@/components/funnel";
+import {
+  BuyBlock,
+  Container,
+  FunnelFooter,
+  NEXT_FUNNEL_ROUTE,
+  OrderBar,
+  goOrNotify,
+} from "@/components/funnel";
 import {
   CAN_DO,
   CANT_DO,
   CHATBOT_BUY_URL,
   CHATBOT_CHECKLISTS,
-  CHATBOT_DECLINE_URL,
   CHATBOT_PRICE_LABEL,
   INSTRUCTION_TEMPLATES,
   TEST_QUESTION_COUNT,
@@ -39,8 +45,6 @@ export const Route = createFileRoute("/upsell-2")({
 
 const buy = () =>
   goOrNotify(CHATBOT_BUY_URL, "Checkout is almost ready", "Secure payment is being connected. Check back very soon!");
-const decline = () =>
-  goOrNotify(CHATBOT_DECLINE_URL, "Your guide is on its way", "Check your inbox for your download details.");
 
 function Buy({ dark = false }: { dark?: boolean }) {
   return (
@@ -49,7 +53,7 @@ function Buy({ dark = false }: { dark?: boolean }) {
       label={`Yes! Add the Chatbot Checklists — ${CHATBOT_PRICE_LABEL}`}
       declineLabel="No thanks — I'll skip building my own chatbot."
       onBuy={buy}
-      onDecline={decline}
+      declineTo={NEXT_FUNNEL_ROUTE["/upsell-2"]}
     />
   );
 }

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { toast } from "sonner";
 import {
@@ -730,6 +730,12 @@ function Footer() {
           <KeyRound className="size-4 text-primary" /> The Ultimate AI Prompt Guide for Real Estate Agents
         </p>
         <p>© {new Date().getFullYear()} · AI output should always be reviewed before publishing.</p>
+      </Container>
+      <Container className="mt-6 text-center text-sm">
+        <Link to="/upsell-1" className="font-semibold text-ember underline underline-offset-4">
+          Want the finished designs, video scripts and email sequences too? See the Copy &amp; Paste
+          Marketing Vault →
+        </Link>
       </Container>
     </footer>
   );

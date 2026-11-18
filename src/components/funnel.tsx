@@ -1,16 +1,38 @@
 import type { ReactNode } from "react";
 import { toast } from "sonner";
 import { ArrowRight, CircleCheck } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
+
+/** Every page in the funnel, in the order a buyer walks through it. */
+export const FUNNEL_ROUTES = ["/", "/upsell-1", "/upsell-2", "/downsell-1"] as const;
+
+export type FunnelRoute = (typeof FUNNEL_ROUTES)[number];
+
+/**
+ * Where a buyer goes when they turn an offer down.
+ * The last page has no next offer, so it stays `null`.
+ */
+export const NEXT_FUNNEL_ROUTE: Record<FunnelRoute, FunnelRoute | null> = {
+  "/": "/upsell-1",
+  "/upsell-1": "/upsell-2",
+  "/upsell-2": "/downsell-1",
+  "/downsell-1": null,
+};
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <div className={`mx-auto w-full max-w-6xl px-5 sm:px-8 ${className}`}>{children}</div>;
 }
 
-const FUNNEL_STEPS = ["Guide", "Vault", "Chatbot", "Access"];
+const FUNNEL_STEPS: { label: string; to: FunnelRoute }[] = [
+  { label: "Guide", to: "/" },
+  { label: "Vault", to: "/upsell-1" },
+  { label: "Chatbot", to: "/upsell-2" },
+  { label: "Lite", to: "/downsell-1" },
+];
 
-/** Top bar shown on every upsell page; `current` is the 0-based active step. */
+/** Top bar shown on every funnel page; `current` is the 0-based active step. Steps link to their page. */
 export function OrderBar({ current }: { current: number }) {
   return (
     <div className="bg-ink text-ink-foreground">
@@ -24,11 +46,18 @@ export function OrderBar({ current }: { current: number }) {
         </p>
         <ol className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest">
           {FUNNEL_STEPS.map((s, i) => (
-            <li key={s} className="flex items-center gap-2">
+            <li key={s.to} className="flex items-center gap-2">
               {i > 0 && <span className="h-px w-5 bg-ink-foreground/30" aria-hidden />}
-              <span className={i === current ? "text-ember" : "text-ink-muted"}>
-                {i + 1} · {s}
-              </span>
+              <Link
+                to={s.to}
+                className={
+                  i === current
+                    ? "text-ember"
+                    : "text-ink-muted underline-offset-4 hover:text-ink-foreground hover:underline"
+                }
+              >
+                {i + 1} · {s.label}
+              </Link>
             </li>
           ))}
         </ol>
@@ -50,29 +79,36 @@ export function BuyBlock({
   declineLabel,
   onBuy,
   onDecline,
+  declineTo,
   dark = false,
 }: {
   label: string;
   declineLabel: string;
   onBuy: () => void;
-  onDecline: () => void;
+  onDecline?: () => void;
+  /** When set, the decline link goes to this funnel page instead of firing `onDecline`. */
+  declineTo?: FunnelRoute | null;
   dark?: boolean;
 }) {
+  const declineClass = `text-sm underline underline-offset-4 ${
+    dark ? "text-ink-muted hover:text-ink-foreground" : "text-muted-foreground hover:text-foreground"
+  }`;
+
   return (
     <div className="flex flex-col items-start gap-4">
       <Button variant="ember" size="xl" onClick={onBuy} className="h-auto whitespace-normal py-4 text-left">
         {label}
         <ArrowRight />
       </Button>
-      <button
-        type="button"
-        onClick={onDecline}
-        className={`text-sm underline underline-offset-4 ${
-          dark ? "text-ink-muted hover:text-ink-foreground" : "text-muted-foreground hover:text-foreground"
-        }`}
-      >
-        {declineLabel}
-      </button>
+      {declineTo ? (
+        <Link to={declineTo} className={declineClass}>
+          {declineLabel}
+        </Link>
+      ) : (
+        <button type="button" onClick={onDecline} className={declineClass}>
+          {declineLabel}
+        </button>
+      )}
     </div>
   );
 }
