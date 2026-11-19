@@ -86,5 +86,5 @@ export const CHATBOT_PRICE_LABEL = `$${CHATBOT_PRICE_USD}`;
  * WarriorPlus upsell links (from the product's WarriorPlus dashboard).
  * Leave empty until the real links are available; the buttons then show a notice.
  */
-export const CHATBOT_BUY_URL = "";
+export const CHATBOT_BUY_URL = "https://warriorplus.com/o2/buy/v19ymw/s660hn/thq2lh";
 export const CHATBOT_DECLINE_URL = "";

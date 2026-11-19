@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 
-import { CHATBOT_CHECKLISTS, INSTRUCTION_TEMPLATES, TEST_QUESTION_COUNT } from "@/lib/chatbot";
+import {
+  CHATBOT_BUY_URL,
+  CHATBOT_CHECKLISTS,
+  INSTRUCTION_TEMPLATES,
+  TEST_QUESTION_COUNT,
+} from "@/lib/chatbot";
 
 describe("Custom AI Chatbot Checklists contents", () => {
   it("has exactly 7 step-by-step checklists", () => {
@@ -13,5 +18,9 @@ describe("Custom AI Chatbot Checklists contents", () => {
 
   it("includes 30 test questions", () => {
     expect(TEST_QUESTION_COUNT).toBe(30);
+  });
+
+  it("sends the Yes button to the WarriorPlus chatbot checkout", () => {
+    expect(CHATBOT_BUY_URL).toBe("https://warriorplus.com/o2/buy/v19ymw/s660hn/thq2lh");
   });
 });

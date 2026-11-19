@@ -103,7 +103,11 @@ export function BuyBlock({
         {label}
         <ArrowRight />
       </Button>
-      {declineTo ? (
+      {declineUrl ? (
+        <a href={declineUrl} className={declineClass}>
+          {declineLabel}
+        </a>
+      ) : declineTo ? (
         <Link to={declineTo} className={declineClass}>
           {declineLabel}
         </Link>

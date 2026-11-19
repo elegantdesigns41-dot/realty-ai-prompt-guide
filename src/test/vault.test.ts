@@ -4,6 +4,7 @@ import {
   NEWSLETTER_TEMPLATE_COUNT,
   SEQUENCE_EMAIL_COUNT,
   VAULT_BUY_URL,
+  VAULT_DECLINE_URL,
   VAULT_MODULES,
 } from "@/lib/vault";
 
@@ -34,5 +35,9 @@ describe("Copy & Paste Marketing Vault contents", () => {
 
   it("sends the Yes button to the WarriorPlus vault checkout", () => {
     expect(VAULT_BUY_URL).toBe("https://warriorplus.com/o2/buy/v19ymw/rdw2pv/x569q2");
+  });
+
+  it("sends the No thanks link to the WarriorPlus vault no-thanks page", () => {
+    expect(VAULT_DECLINE_URL).toBe("https://warriorplus.com/o/nothanks/rdw2pv");
   });
 });
