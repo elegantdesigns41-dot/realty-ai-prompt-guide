@@ -20,4 +20,5 @@
 - [x] Connect the Chatbot "Yes" button to its WarriorPlus upsell link (s660hn/thq2lh)
 - [x] Connect the Vault Lite "Yes" button to its WarriorPlus downsell link (blq8mw/hbc676)
 - [x] Connect the Vault Lite "No thanks" link to its WarriorPlus no-thanks page (blq8mw)
+- [x] Connect the Chatbot "No thanks" link to its WarriorPlus no-thanks page (s660hn)
 - [ ] Add a final access/thank-you page for after the downsell (the downsell "No thanks" now goes to WarriorPlus's own no-thanks page)

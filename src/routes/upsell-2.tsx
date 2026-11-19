@@ -14,6 +14,7 @@ import {
   CANT_DO,
   CHATBOT_BUY_URL,
   CHATBOT_CHECKLISTS,
+  CHATBOT_DECLINE_URL,
   CHATBOT_PRICE_LABEL,
   INSTRUCTION_TEMPLATES,
   TEST_QUESTION_COUNT,
@@ -55,6 +56,7 @@ function Buy({ dark = false }: { dark?: boolean }) {
       declineLabel="No thanks — I'll skip building my own chatbot."
       onBuy={buy}
       declineTo={NEXT_FUNNEL_ROUTE["/upsell-2"]}
+      declineUrl={CHATBOT_DECLINE_URL}
     />
   );
 }
