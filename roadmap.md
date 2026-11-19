@@ -17,5 +17,5 @@
 - [x] Add the WarriorPlus tracking code to the main page (s4zkjk) and upsell-1 (rdw2pv)
 - [ ] Add the WarriorPlus tracking codes to upsell-2 and downsell-1 (waiting on the codes)
 - [x] Connect the Chatbot "Yes" button to its WarriorPlus upsell link (s660hn/thq2lh)
-- [ ] Connect the Vault Lite "Yes" button to its WarriorPlus downsell link (waiting on the link)
+- [x] Connect the Vault Lite "Yes" button to its WarriorPlus downsell link (blq8mw/hbc676)
 - [ ] Add a final access/thank-you page for after the downsell (downsell "No thanks" still shows a notice)

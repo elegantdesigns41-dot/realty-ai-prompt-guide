@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { LITE_MODULES } from "@/lib/vault-lite";
+import { LITE_BUY_URL, LITE_MODULES } from "@/lib/vault-lite";
 
 const mod = (key: string) => LITE_MODULES.find((m) => m.key === key)!;
 
@@ -21,5 +21,9 @@ describe("Marketing Vault Lite contents", () => {
   it("includes 2 design worksheets", () => {
     expect(mod("worksheets").count).toBe(2);
     expect(mod("worksheets").includes).toHaveLength(2);
+  });
+
+  it("sends the Yes button to the WarriorPlus Vault Lite checkout", () => {
+    expect(LITE_BUY_URL).toBe("https://warriorplus.com/o2/buy/v19ymw/blq8mw/hbc676");
   });
 });
