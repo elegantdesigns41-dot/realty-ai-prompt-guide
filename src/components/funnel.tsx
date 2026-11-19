@@ -127,3 +127,15 @@ export function FunnelFooter() {
     </footer>
   );
 }
+
+/**
+ * WarriorPlus fills this div with its required site disclaimer.
+ * Rendered once in the root route, so every page carries it.
+ */
+export function WarriorPlusDisclaimer() {
+  return (
+    <Container className="py-6 text-center text-xs leading-relaxed text-muted-foreground">
+      <div className="wplus_spdisclaimer" />
+    </Container>
+  );
+}
