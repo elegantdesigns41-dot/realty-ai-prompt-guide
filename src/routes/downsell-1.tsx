@@ -67,6 +67,7 @@ function BuyBlock({ dark = false }: { dark?: boolean }) {
       declineLabel="No thanks — I'll pass on the Vault completely."
       onBuy={handleBuy}
       onDecline={handleDecline}
+      declineUrl={LITE_DECLINE_URL}
     />
   );
 }

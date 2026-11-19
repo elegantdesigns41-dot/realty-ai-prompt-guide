@@ -43,4 +43,4 @@ export const LITE_PRICE_LABEL = `$${LITE_PRICE_USD}`;
  * Leave empty until the real links are available; the buttons then show a notice.
  */
 export const LITE_BUY_URL = "https://warriorplus.com/o2/buy/v19ymw/blq8mw/hbc676";
-export const LITE_DECLINE_URL = "";
+export const LITE_DECLINE_URL = "https://warriorplus.com/o/nothanks/blq8mw";

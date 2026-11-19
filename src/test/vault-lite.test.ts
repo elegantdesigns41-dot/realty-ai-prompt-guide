@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { LITE_BUY_URL, LITE_MODULES } from "@/lib/vault-lite";
+import { LITE_BUY_URL, LITE_DECLINE_URL, LITE_MODULES } from "@/lib/vault-lite";
 
 const mod = (key: string) => LITE_MODULES.find((m) => m.key === key)!;
 
@@ -25,5 +25,9 @@ describe("Marketing Vault Lite contents", () => {
 
   it("sends the Yes button to the WarriorPlus Vault Lite checkout", () => {
     expect(LITE_BUY_URL).toBe("https://warriorplus.com/o2/buy/v19ymw/blq8mw/hbc676");
+  });
+
+  it("sends the No thanks button to the WarriorPlus Vault Lite no-thanks page", () => {
+    expect(LITE_DECLINE_URL).toBe("https://warriorplus.com/o/nothanks/blq8mw");
   });
 });
