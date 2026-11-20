@@ -139,8 +139,11 @@ export function BuyBlock({
 
 export function FunnelFooter() {
   return (
-    <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground">
-      © {new Date().getFullYear()} The Ultimate AI Prompt Guide for Real Estate Agents
+    <footer className="flex flex-col items-center gap-2 border-t border-border py-8 text-center text-xs text-muted-foreground">
+      <p>© {new Date().getFullYear()} The Ultimate AI Prompt Guide for Real Estate Agents</p>
+      <Link to="/privacy" className="underline underline-offset-4 hover:text-foreground">
+        Privacy Policy
+      </Link>
     </footer>
   );
 }

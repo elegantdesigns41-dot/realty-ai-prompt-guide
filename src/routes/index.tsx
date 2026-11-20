@@ -699,6 +699,11 @@ function Footer() {
           Marketing Vault →
         </Link>
       </Container>
+      <Container className="mt-4 text-center text-sm text-muted-foreground">
+        <Link to="/privacy" className="underline underline-offset-4 hover:text-foreground">
+          Privacy Policy
+        </Link>
+      </Container>
     </footer>
   );
 }
