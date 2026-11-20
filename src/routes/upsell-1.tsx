@@ -12,6 +12,7 @@ import {
 import {
   NEWSLETTER_TEMPLATE_COUNT,
   SEQUENCE_EMAIL_COUNT,
+  VAULT_BUY_PIXEL_URL,
   VAULT_BUY_URL,
   VAULT_DECLINE_URL,
   VAULT_MODULES,
@@ -77,6 +78,7 @@ function BuyBlock({ dark = false }: { dark?: boolean }) {
       label={`Yes! Add the Vault to my order — ${VAULT_PRICE_LABEL}`}
       declineLabel="No thanks — I'll write and design my own marketing from scratch."
       onBuy={handleBuy}
+      pixelUrl={VAULT_BUY_PIXEL_URL}
       declineUrl={VAULT_DECLINE_URL}
       declineTo={NEXT_FUNNEL_ROUTE["/upsell-1"]}
       showDisclaimer

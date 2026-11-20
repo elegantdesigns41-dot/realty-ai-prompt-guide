@@ -82,6 +82,7 @@ export function BuyBlock({
   declineTo,
   declineUrl,
   showDisclaimer = false,
+  pixelUrl,
   dark = false,
 }: {
   label: string;
@@ -94,6 +95,8 @@ export function BuyBlock({
   declineUrl?: string;
   /** When true, the WarriorPlus site disclaimer sits right under the buy button. */
   showDisclaimer?: boolean;
+  /** Hidden WarriorPlus button-tracking pixel rendered beside the buy button. */
+  pixelUrl?: string;
   dark?: boolean;
 }) {
   const declineClass = `text-sm underline underline-offset-4 ${
@@ -106,6 +109,16 @@ export function BuyBlock({
         {label}
         <ArrowRight />
       </Button>
+      {pixelUrl && (
+        <img
+          src={pixelUrl}
+          height={1}
+          width={1}
+          alt=""
+          aria-hidden="true"
+          style={{ visibility: "hidden", position: "absolute" }}
+        />
+      )}
       {declineUrl ? (
         <a href={declineUrl} className={declineClass}>
           {declineLabel}
