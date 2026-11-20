@@ -12,6 +12,7 @@ import {
 import {
   CAN_DO,
   CANT_DO,
+  CHATBOT_BUY_PIXEL_URL,
   CHATBOT_BUY_URL,
   CHATBOT_CHECKLISTS,
   CHATBOT_DECLINE_URL,
@@ -55,6 +56,7 @@ function Buy({ dark = false }: { dark?: boolean }) {
       label={`Yes! Add the Chatbot Checklists — ${CHATBOT_PRICE_LABEL}`}
       declineLabel="No thanks — I'll skip building my own chatbot."
       onBuy={buy}
+      pixelUrl={CHATBOT_BUY_PIXEL_URL}
       declineTo={NEXT_FUNNEL_ROUTE["/upsell-2"]}
       declineUrl={CHATBOT_DECLINE_URL}
       showDisclaimer
