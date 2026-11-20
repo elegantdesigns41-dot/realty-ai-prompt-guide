@@ -699,10 +699,15 @@ function Footer() {
           Marketing Vault →
         </Link>
       </Container>
-      <Container className="mt-4 text-center text-sm text-muted-foreground">
-        <Link to="/privacy" className="underline underline-offset-4 hover:text-foreground">
-          Privacy Policy
-        </Link>
+      <Container className="mt-4 text-sm text-muted-foreground">
+        <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+          <Link to="/privacy" className="underline underline-offset-4 hover:text-foreground">
+            Privacy Policy
+          </Link>
+          <Link to="/income-disclaimer" className="underline underline-offset-4 hover:text-foreground">
+            Income Disclaimer
+          </Link>
+        </nav>
       </Container>
     </footer>
   );
