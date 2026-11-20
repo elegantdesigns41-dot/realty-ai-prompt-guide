@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { toast } from "sonner";
 import { ArrowRight, CircleCheck } from "lucide-react";
 import { Link } from "@tanstack/react-router";
@@ -180,8 +180,33 @@ export function WarriorPlusDisclaimer({
   dark?: boolean;
   className?: string;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  // WarriorPlus fills the disclaimer only when its script runs, which happens
+  // once per full page load. After an in-app navigation (or if hydration
+  // cleared the text) the div is empty, so load the script again.
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      if (!ref.current || ref.current.textContent?.trim()) return;
+      const sources = new Set(
+        Array.from(document.querySelectorAll<HTMLScriptElement>('script[src*="warriorplus.com/o2/js/"]')).map(
+          (el) => el.src,
+        ),
+      );
+      sources.forEach((src) => {
+        const script = document.createElement("script");
+        script.src = src;
+        script.async = true;
+        document.body.appendChild(script);
+      });
+    }, 300);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <div
+      ref={ref}
+      suppressHydrationWarning
       className={`wplus_spdisclaimer text-base leading-relaxed ${
         dark ? "text-ink-muted" : "text-muted-foreground"
       } ${className}`}
