@@ -29,9 +29,6 @@ const DISCLAIMER_SCRIPTS: Record<FunnelRoute, string> = {
   "/downsell-1": "https://warriorplus.com/o2/js/blq8mw",
 };
 
-// Several disclaimer placeholders mount together on the main sales page. Share
-// one in-flight script load between them, but allow it to load again after a
-// later client-side navigation back to a sales page.
 const pendingDisclaimerScripts = new Map<string, Promise<void>>();
 
 function loadDisclaimerScript(src: string) {
@@ -85,6 +82,7 @@ export function OrderBar({ current }: { current: number }) {
               {i > 0 && <span className="h-px w-5 bg-ink-foreground/30" aria-hidden />}
               <Link
                 to={s.to}
+                reloadDocument
                 className={
                   i === current
                     ? "text-ember"
@@ -217,9 +215,6 @@ export function WarriorPlusDisclaimer({
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
-  // Run the correct offer's WarriorPlus script only after React has mounted the
-  // disclaimer node. The route head script can run before that node exists, and
-  // SPA navigation does not guarantee that the page's head script runs again.
   useEffect(() => {
     const timer = window.setTimeout(() => {
       if (!ref.current || ref.current.textContent?.trim()) return;
