@@ -21,6 +21,41 @@ export const NEXT_FUNNEL_ROUTE: Record<FunnelRoute, FunnelRoute | null> = {
   "/downsell-1": null,
 };
 
+/** WarriorPlus disclaimer loader belonging to each sales page. */
+const DISCLAIMER_SCRIPTS: Record<FunnelRoute, string> = {
+  "/": "https://warriorplus.com/o2/js/s4zkjk",
+  "/upsell-1": "https://warriorplus.com/o2/js/rdw2pv",
+  "/upsell-2": "https://warriorplus.com/o2/js/s660hn",
+  "/downsell-1": "https://warriorplus.com/o2/js/blq8mw",
+};
+
+// Several disclaimer placeholders mount together on the main sales page. Share
+// one in-flight script load between them, but allow it to load again after a
+// later client-side navigation back to a sales page.
+const pendingDisclaimerScripts = new Map<string, Promise<void>>();
+
+function loadDisclaimerScript(src: string) {
+  const pending = pendingDisclaimerScripts.get(src);
+  if (pending) return pending;
+
+  const load = new Promise<void>((resolve) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => resolve();
+    document.body.appendChild(script);
+  });
+
+  pendingDisclaimerScripts.set(src, load);
+  void load.then(() => {
+    if (pendingDisclaimerScripts.get(src) === load) {
+      pendingDisclaimerScripts.delete(src);
+    }
+  });
+  return load;
+}
+
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <div className={`mx-auto w-full max-w-6xl px-5 sm:px-8 ${className}`}>{children}</div>;
 }
@@ -182,28 +217,15 @@ export function WarriorPlusDisclaimer({
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
-  // WarriorPlus fills the disclaimer only when its script runs, which happens
-  // once per full page load. After an in-app navigation (or if hydration
-  // cleared the text) the div is empty, so load the script again. TanStack
-  // Router may not leave the current route's head script in the document, so
-  // explicitly include the home sales page script whenever its disclaimer mounts.
+  // Run the correct offer's WarriorPlus script only after React has mounted the
+  // disclaimer node. The route head script can run before that node exists, and
+  // SPA navigation does not guarantee that the page's head script runs again.
   useEffect(() => {
     const timer = window.setTimeout(() => {
       if (!ref.current || ref.current.textContent?.trim()) return;
-      const sources = new Set(
-        Array.from(document.querySelectorAll<HTMLScriptElement>('script[src*="warriorplus.com/o2/js/"]')).map(
-          (el) => el.src,
-        ),
-      );
-      if (window.location.pathname === "/") {
-        sources.add("https://warriorplus.com/o2/js/s4zkjk");
-      }
-      sources.forEach((src) => {
-        const script = document.createElement("script");
-        script.src = src;
-        script.async = true;
-        document.body.appendChild(script);
-      });
+      const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+      const src = DISCLAIMER_SCRIPTS[pathname as FunnelRoute];
+      if (src) void loadDisclaimerScript(src);
     }, 300);
     return () => window.clearTimeout(timer);
   }, []);
