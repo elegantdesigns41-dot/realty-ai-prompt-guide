@@ -3,6 +3,7 @@ import { Check, ClipboardList, LayoutTemplate, Mail } from "lucide-react";
 
 import { BuyBlock as FunnelBuyBlock, Container, FunnelFooter, OrderBar, goOrNotify } from "@/components/funnel";
 import {
+  LITE_BUY_PIXEL_URL,
   LITE_BUY_URL,
   LITE_DECLINE_URL,
   LITE_MODULES,
@@ -66,6 +67,7 @@ function BuyBlock({ dark = false }: { dark?: boolean }) {
       label={`Yes! Add Marketing Vault Lite to my order — ${LITE_PRICE_LABEL}`}
       declineLabel="No thanks — I'll pass on the Vault completely."
       onBuy={handleBuy}
+      pixelUrl={LITE_BUY_PIXEL_URL}
       onDecline={handleDecline}
       declineUrl={LITE_DECLINE_URL}
       showDisclaimer
