@@ -184,7 +184,9 @@ export function WarriorPlusDisclaimer({
 
   // WarriorPlus fills the disclaimer only when its script runs, which happens
   // once per full page load. After an in-app navigation (or if hydration
-  // cleared the text) the div is empty, so load the script again.
+  // cleared the text) the div is empty, so load the script again. TanStack
+  // Router may not leave the current route's head script in the document, so
+  // explicitly include the home sales page script whenever its disclaimer mounts.
   useEffect(() => {
     const timer = window.setTimeout(() => {
       if (!ref.current || ref.current.textContent?.trim()) return;
@@ -193,6 +195,9 @@ export function WarriorPlusDisclaimer({
           (el) => el.src,
         ),
       );
+      if (window.location.pathname === "/") {
+        sources.add("https://warriorplus.com/o2/js/s4zkjk");
+      }
       sources.forEach((src) => {
         const script = document.createElement("script");
         script.src = src;
