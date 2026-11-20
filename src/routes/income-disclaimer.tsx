@@ -68,8 +68,7 @@ function IncomeDisclaimerPage() {
                 Any examples, scenarios, time savings or outcomes mentioned on this site are illustrations only
                 and are not typical. Your results depend on many factors outside our control, including your
                 experience, skills, effort, local market conditions, the quality of your listings, your budget
-                and how you apply the material. Many people who purchase educational products do not achieve
-                meaningful results.
+                and how you apply the material.
               </p>
             </Section>
 
