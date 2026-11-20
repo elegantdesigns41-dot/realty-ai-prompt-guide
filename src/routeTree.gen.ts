@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Downsell1RouteImport } from './routes/downsell-1'
+import { Route as IncomeDisclaimerRouteImport } from './routes/income-disclaimer'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as Upsell1RouteImport } from './routes/upsell-1'
 import { Route as Upsell2RouteImport } from './routes/upsell-2'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const Downsell1Route = Downsell1RouteImport.update({
   id: '/downsell-1',
   path: '/downsell-1',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IncomeDisclaimerRoute = IncomeDisclaimerRouteImport.update({
+  id: '/income-disclaimer',
+  path: '/income-disclaimer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -44,6 +50,7 @@ const Upsell2Route = Upsell2RouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/downsell-1': typeof Downsell1Route
+  '/income-disclaimer': typeof IncomeDisclaimerRoute
   '/privacy': typeof PrivacyRoute
   '/upsell-1': typeof Upsell1Route
   '/upsell-2': typeof Upsell2Route
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/downsell-1': typeof Downsell1Route
+  '/income-disclaimer': typeof IncomeDisclaimerRoute
   '/privacy': typeof PrivacyRoute
   '/upsell-1': typeof Upsell1Route
   '/upsell-2': typeof Upsell2Route
@@ -59,21 +67,42 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/downsell-1': typeof Downsell1Route
+  '/income-disclaimer': typeof IncomeDisclaimerRoute
   '/privacy': typeof PrivacyRoute
   '/upsell-1': typeof Upsell1Route
   '/upsell-2': typeof Upsell2Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/downsell-1' | '/privacy' | '/upsell-1' | '/upsell-2'
+  fullPaths:
+    | '/'
+    | '/downsell-1'
+    | '/income-disclaimer'
+    | '/privacy'
+    | '/upsell-1'
+    | '/upsell-2'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/downsell-1' | '/privacy' | '/upsell-1' | '/upsell-2'
-  id: '__root__' | '/' | '/downsell-1' | '/privacy' | '/upsell-1' | '/upsell-2'
+  to:
+    | '/'
+    | '/downsell-1'
+    | '/income-disclaimer'
+    | '/privacy'
+    | '/upsell-1'
+    | '/upsell-2'
+  id:
+    | '__root__'
+    | '/'
+    | '/downsell-1'
+    | '/income-disclaimer'
+    | '/privacy'
+    | '/upsell-1'
+    | '/upsell-2'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   Downsell1Route: typeof Downsell1Route
+  IncomeDisclaimerRoute: typeof IncomeDisclaimerRoute
   PrivacyRoute: typeof PrivacyRoute
   Upsell1Route: typeof Upsell1Route
   Upsell2Route: typeof Upsell2Route
@@ -93,6 +122,13 @@ declare module '@tanstack/react-router' {
       path: '/downsell-1'
       fullPath: '/downsell-1'
       preLoaderRoute: typeof Downsell1RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/income-disclaimer': {
+      id: '/income-disclaimer'
+      path: '/income-disclaimer'
+      fullPath: '/income-disclaimer'
+      preLoaderRoute: typeof IncomeDisclaimerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -122,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   Downsell1Route: Downsell1Route,
+  IncomeDisclaimerRoute: IncomeDisclaimerRoute,
   PrivacyRoute: PrivacyRoute,
   Upsell1Route: Upsell1Route,
   Upsell2Route: Upsell2Route,
