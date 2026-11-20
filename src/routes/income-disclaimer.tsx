@@ -114,8 +114,11 @@ function IncomeDisclaimerPage() {
 
             <Section title="Contact us">
               <p>
-                If you have questions about this Income Disclaimer, please reach out using the support contact
-                provided in your purchase receipt email.
+                If you have questions about this Income Disclaimer, please reach out through our{" "}
+                <Link to="/support" className="text-foreground underline underline-offset-4">
+                  Support page
+                </Link>
+                .
               </p>
             </Section>
           </article>
