@@ -10,7 +10,6 @@ import {
   KeyRound,
   Lightbulb,
   ShieldCheck,
-  Star,
   X,
   Download,
 } from "lucide-react";
@@ -72,7 +71,6 @@ function SalesPage() {
         <Samples />
         <WhoFor />
         <Bonuses />
-        <Testimonials />
         <Pricing />
         <Faq />
         <FinalCta />
@@ -185,11 +183,10 @@ function ProofStrip() {
     { n: PROMPT_COUNT_LABEL, l: "Prompts" },
     { n: `${PROMPT_CATEGORIES.length}`, l: "Categories" },
     { n: "10+ hrs", l: "Saved each week" },
-    { n: "4.9★", l: "Average rating" },
   ];
   return (
     <section className="border-y border-border bg-secondary/60">
-      <Container className="grid grid-cols-2 gap-6 py-10 md:grid-cols-4">
+      <Container className="grid grid-cols-3 gap-6 py-10">
         {stats.map((s) => (
           <div key={s.l} className="text-center">
             <p className="font-display text-3xl font-semibold sm:text-4xl">{s.n}</p>
@@ -533,54 +530,6 @@ function Bonuses() {
               <h3 className="mt-6 text-xl font-semibold">{b.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.desc}</p>
             </div>
-          ))}
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-function Testimonials() {
-  const quotes = [
-    {
-      q: "I used to spend Sunday nights writing listing descriptions. Now it takes me ten minutes and they're better than what I wrote myself.",
-      n: "Danielle R.",
-      r: "Listing agent, Austin",
-    },
-    {
-      q: "The follow-up prompts alone revived three leads in my first week. One of them closed last month.",
-      n: "Marcus T.",
-      r: "Buyer's agent, Atlanta",
-    },
-    {
-      q: "I gave this to my whole team. Our social posting went from random to five times a week.",
-      n: "Priya S.",
-      r: "Team lead, Phoenix",
-    },
-  ];
-  return (
-    <section className="py-20 md:py-28">
-      <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow text-primary">Agent stories</p>
-          <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">Agents are getting hours back</h2>
-        </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {quotes.map((t) => (
-            <figure key={t.n} className="flex flex-col rounded-3xl border border-border bg-card p-8">
-              <div className="flex gap-1 text-ember">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="size-4 fill-current" />
-                ))}
-              </div>
-              <blockquote className="mt-5 flex-1 text-lg leading-relaxed">
-                “{t.q}”
-              </blockquote>
-              <figcaption className="mt-6 border-t border-border pt-5">
-                <p className="font-semibold">{t.n}</p>
-                <p className="text-sm text-muted-foreground">{t.r}</p>
-              </figcaption>
-            </figure>
           ))}
         </div>
       </Container>
