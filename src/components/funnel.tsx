@@ -81,6 +81,7 @@ export function BuyBlock({
   onDecline,
   declineTo,
   declineUrl,
+  showDisclaimer = false,
   dark = false,
 }: {
   label: string;
@@ -91,6 +92,8 @@ export function BuyBlock({
   declineTo?: FunnelRoute | null;
   /** When set, the decline link opens this external URL (e.g. the WarriorPlus no-thanks page). */
   declineUrl?: string;
+  /** When true, the WarriorPlus site disclaimer sits right under the buy button. */
+  showDisclaimer?: boolean;
   dark?: boolean;
 }) {
   const declineClass = `text-sm underline underline-offset-4 ${
@@ -116,6 +119,7 @@ export function BuyBlock({
           {declineLabel}
         </button>
       )}
+      {showDisclaimer && <WarriorPlusDisclaimer dark={dark} className="mt-2 max-w-xl" />}
     </div>
   );
 }
@@ -130,12 +134,22 @@ export function FunnelFooter() {
 
 /**
  * WarriorPlus fills this div with its required site disclaimer.
- * Rendered once in the root route, so every page carries it.
+ * Rendered right under the buy button on each offer page, at the page's normal
+ * text size and on no background of its own (see the .wplus_spdisclaimer rules
+ * in src/styles.css).
  */
-export function WarriorPlusDisclaimer() {
+export function WarriorPlusDisclaimer({
+  dark = false,
+  className = "",
+}: {
+  dark?: boolean;
+  className?: string;
+}) {
   return (
-    <Container className="py-6 text-center text-xs leading-relaxed text-muted-foreground">
-      <div className="wplus_spdisclaimer" />
-    </Container>
+    <div
+      className={`wplus_spdisclaimer text-base leading-relaxed ${
+        dark ? "text-ink-muted" : "text-muted-foreground"
+      } ${className}`}
+    />
   );
 }

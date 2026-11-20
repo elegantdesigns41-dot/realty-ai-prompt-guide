@@ -79,6 +79,7 @@ function BuyBlock({ dark = false }: { dark?: boolean }) {
       onBuy={handleBuy}
       declineUrl={VAULT_DECLINE_URL}
       declineTo={NEXT_FUNNEL_ROUTE["/upsell-1"]}
+      showDisclaimer
     />
   );
 }

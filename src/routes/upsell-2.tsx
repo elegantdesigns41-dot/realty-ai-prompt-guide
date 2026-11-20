@@ -57,6 +57,7 @@ function Buy({ dark = false }: { dark?: boolean }) {
       onBuy={buy}
       declineTo={NEXT_FUNNEL_ROUTE["/upsell-2"]}
       declineUrl={CHATBOT_DECLINE_URL}
+      showDisclaimer
     />
   );
 }

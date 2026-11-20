@@ -196,3 +196,22 @@
 @utility animate-float-slow {
   animation: float-slow 7s ease-in-out infinite;
 }
+
+/*
+ * WarriorPlus writes its required site disclaimer into .wplus_spdisclaimer.
+ * Keep it the same size as the rest of the page, on no background of its own,
+ * and in the surrounding text colour so it stays readable on light and dark
+ * sections alike.
+ */
+.wplus_spdisclaimer,
+.wplus_spdisclaimer * {
+  background-color: transparent !important;
+  background-image: none !important;
+  font-size: 1rem !important;
+  line-height: 1.65 !important;
+  color: inherit !important;
+}
+
+.wplus_spdisclaimer a {
+  text-decoration: underline;
+}

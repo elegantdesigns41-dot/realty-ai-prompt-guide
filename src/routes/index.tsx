@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { WarriorPlusDisclaimer } from "@/components/funnel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Accordion,
@@ -641,6 +642,7 @@ function Pricing() {
           <p className="mt-4 flex items-center justify-center gap-2 text-xs text-muted-foreground">
             <Clock className="size-3.5" /> Instant access right after checkout
           </p>
+          <WarriorPlusDisclaimer className="mt-5 text-center" />
         </div>
       </Container>
     </section>
@@ -716,6 +718,7 @@ function FinalCta() {
               <ArrowRight />
             </a>
           </Button>
+          <WarriorPlusDisclaimer dark className="relative mx-auto mt-6 max-w-2xl text-center" />
         </div>
       </Container>
     </section>

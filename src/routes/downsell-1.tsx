@@ -68,6 +68,7 @@ function BuyBlock({ dark = false }: { dark?: boolean }) {
       onBuy={handleBuy}
       onDecline={handleDecline}
       declineUrl={LITE_DECLINE_URL}
+      showDisclaimer
     />
   );
 }
