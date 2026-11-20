@@ -1,0 +1,4 @@
+[build]
+  command = "bun run build"
+  # On Netlify, the Nitro build writes the browser assets to dist/ (the server goes to .netlify/functions-internal).
+  publish = "dist"

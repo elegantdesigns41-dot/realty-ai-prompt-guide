@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { WarriorPlusDisclaimer } from "@/components/funnel";
+import { FooterLinks, WarriorPlusDisclaimer } from "@/components/funnel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Accordion,
@@ -700,14 +700,7 @@ function Footer() {
         </Link>
       </Container>
       <Container className="mt-4 text-sm text-muted-foreground">
-        <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-          <Link to="/privacy" className="underline underline-offset-4 hover:text-foreground">
-            Privacy Policy
-          </Link>
-          <Link to="/income-disclaimer" className="underline underline-offset-4 hover:text-foreground">
-            Income Disclaimer
-          </Link>
-        </nav>
+        <FooterLinks />
       </Container>
     </footer>
   );
