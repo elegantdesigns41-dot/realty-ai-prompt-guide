@@ -29,6 +29,7 @@ import {
   PROMPT_CATEGORIES,
   PROMPT_COUNT_LABEL,
   SAMPLE_PROMPTS,
+  WARRIORPLUS_BUY_PIXEL_URL,
   WARRIORPLUS_BUY_URL,
 } from "@/lib/playbook";
 import mockup from "@/assets/playbook-mockup.jpg";
@@ -143,6 +144,14 @@ function Hero() {
                 <ArrowRight />
               </a>
             </Button>
+            <img
+              src={WARRIORPLUS_BUY_PIXEL_URL}
+              height={1}
+              width={1}
+              alt=""
+              aria-hidden="true"
+              style={{ visibility: "hidden" }}
+            />
           </div>
           <WarriorPlusDisclaimer className="mt-5 max-w-xl" />
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
