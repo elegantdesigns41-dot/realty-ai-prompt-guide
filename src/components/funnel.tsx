@@ -141,15 +141,29 @@ export function FunnelFooter() {
   return (
     <footer className="flex flex-col items-center gap-2 border-t border-border py-8 text-center text-xs text-muted-foreground">
       <p>© {new Date().getFullYear()} The Ultimate AI Prompt Guide for Real Estate Agents</p>
-      <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-        <Link to="/privacy" className="underline underline-offset-4 hover:text-foreground">
-          Privacy Policy
-        </Link>
-        <Link to="/income-disclaimer" className="underline underline-offset-4 hover:text-foreground">
-          Income Disclaimer
-        </Link>
-      </nav>
+      <FooterLinks />
     </footer>
+  );
+}
+
+/** Support inbox shown on the support page. */
+export const SUPPORT_EMAIL = "nadiamichelle308@gmail.com";
+
+/** Support and legal links shared by every page footer. */
+export function FooterLinks() {
+  const linkClass = "underline underline-offset-4 hover:text-foreground";
+  return (
+    <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+      <Link to="/support" className={linkClass}>
+        Support
+      </Link>
+      <Link to="/privacy" className={linkClass}>
+        Privacy Policy
+      </Link>
+      <Link to="/income-disclaimer" className={linkClass}>
+        Income Disclaimer
+      </Link>
+    </nav>
   );
 }
 
