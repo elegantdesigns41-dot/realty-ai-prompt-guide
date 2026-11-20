@@ -146,6 +146,7 @@ function Hero() {
               </a>
             </Button>
           </div>
+          <WarriorPlusDisclaimer className="mt-5 max-w-xl" />
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
             {["Instant download", "ChatGPT, Claude, Gemini & Perplexity", "30-day guarantee"].map(
               (t) => (
