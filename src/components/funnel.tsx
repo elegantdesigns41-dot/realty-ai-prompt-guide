@@ -35,25 +35,35 @@ const BUY_URL_BY_PIXEL: Record<string, string> = {
     "https://warriorplus.com/o2/buy/v19ymw/blq8mw/hbc676",
 };
 
+const disclaimerLoads = new Map<string, Promise<void>>();
+
 function normalizePath(pathname: string) {
   return (pathname.replace(/\/$/, "") || "/") as FunnelRoute;
 }
 
-/** Ensure the route's script is in the body before its closing tag, without loading it twice. */
+/** Load after the disclaimer containers exist; a script that ran in <head> won't rerun if moved. */
 function ensureDisclaimerScript(src: string) {
-  const existing = Array.from(document.querySelectorAll<HTMLScriptElement>("script[src]"))
-    .find((script) => script.src === src);
+  const existingLoad = disclaimerLoads.get(src);
+  if (existingLoad) return existingLoad;
 
-  if (existing) {
-    if (existing.parentElement !== document.body) document.body.appendChild(existing);
-    return;
-  }
+  const existingScripts = Array.from(document.querySelectorAll<HTMLScriptElement>("script[src]"))
+    .filter((script) => script.src === src);
 
-  const script = document.createElement("script");
-  script.src = src;
-  script.async = true;
-  script.dataset.warriorplusDisclaimer = "true";
-  document.body.appendChild(script);
+  // Remove route-head copies: they may have executed before React mounted the disclaimer element.
+  for (const script of existingScripts) script.remove();
+
+  const load = new Promise<void>((resolve) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
+    script.dataset.warriorplusDisclaimer = "true";
+    script.addEventListener("load", () => resolve(), { once: true });
+    script.addEventListener("error", () => resolve(), { once: true });
+    document.body.appendChild(script);
+  });
+
+  disclaimerLoads.set(src, load);
+  return load;
 }
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -180,7 +190,7 @@ export function WarriorPlusDisclaimer({ dark = false, className = "" }: { dark?:
 
   useEffect(() => {
     const src = DISCLAIMER_SCRIPTS[normalizePath(window.location.pathname)];
-    if (src) ensureDisclaimerScript(src);
+    if (src) void ensureDisclaimerScript(src);
   }, []);
 
   return (
