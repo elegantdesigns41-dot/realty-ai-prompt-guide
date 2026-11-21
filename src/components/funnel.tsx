@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 import { toast } from "sonner";
 import { ArrowRight, CircleCheck } from "lucide-react";
 import { Link } from "@tanstack/react-router";
@@ -21,38 +21,6 @@ export const NEXT_FUNNEL_ROUTE: Record<FunnelRoute, FunnelRoute | null> = {
   "/downsell-1": null,
 };
 
-/** WarriorPlus disclaimer loader belonging to each sales page. */
-const DISCLAIMER_SCRIPTS: Record<FunnelRoute, string> = {
-  "/": "https://warriorplus.com/o2/js/s4zkjk",
-  "/upsell-1": "https://warriorplus.com/o2/js/rdw2pv",
-  "/upsell-2": "https://warriorplus.com/o2/js/s660hn",
-  "/downsell-1": "https://warriorplus.com/o2/js/blq8mw",
-};
-
-const pendingDisclaimerScripts = new Map<string, Promise<void>>();
-
-function loadDisclaimerScript(src: string) {
-  const pending = pendingDisclaimerScripts.get(src);
-  if (pending) return pending;
-
-  const load = new Promise<void>((resolve) => {
-    const script = document.createElement("script");
-    script.src = src;
-    script.async = true;
-    script.onload = () => resolve();
-    script.onerror = () => resolve();
-    document.body.appendChild(script);
-  });
-
-  pendingDisclaimerScripts.set(src, load);
-  void load.then(() => {
-    if (pendingDisclaimerScripts.get(src) === load) {
-      pendingDisclaimerScripts.delete(src);
-    }
-  });
-  return load;
-}
-
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <div className={`mx-auto w-full max-w-6xl px-5 sm:px-8 ${className}`}>{children}</div>;
 }
@@ -64,7 +32,7 @@ const FUNNEL_STEPS: { label: string; to: FunnelRoute }[] = [
   { label: "Lite", to: "/downsell-1" },
 ];
 
-/** Top bar shown on every funnel page; `current` is the 0-based active step. Steps link to their page. */
+/** Top bar shown on every funnel page; `current` is the 0-based active step. */
 export function OrderBar({ current }: { current: number }) {
   return (
     <div className="bg-ink text-ink-foreground">
@@ -122,13 +90,9 @@ export function BuyBlock({
   declineLabel: string;
   onBuy: () => void;
   onDecline?: () => void;
-  /** When set, the decline link goes to this funnel page instead of firing `onDecline`. */
   declineTo?: FunnelRoute | null;
-  /** When set, the decline link opens this external URL (e.g. the WarriorPlus no-thanks page). */
   declineUrl?: string;
-  /** When true, the WarriorPlus site disclaimer sits right under the buy button. */
   showDisclaimer?: boolean;
-  /** Hidden WarriorPlus button-tracking pixel rendered beside the buy button. */
   pixelUrl?: string;
   dark?: boolean;
 }) {
@@ -153,17 +117,11 @@ export function BuyBlock({
         />
       )}
       {declineUrl ? (
-        <a href={declineUrl} className={declineClass}>
-          {declineLabel}
-        </a>
+        <a href={declineUrl} className={declineClass}>{declineLabel}</a>
       ) : declineTo ? (
-        <Link to={declineTo} className={declineClass}>
-          {declineLabel}
-        </Link>
+        <Link to={declineTo} className={declineClass}>{declineLabel}</Link>
       ) : (
-        <button type="button" onClick={onDecline} className={declineClass}>
-          {declineLabel}
-        </button>
+        <button type="button" onClick={onDecline} className={declineClass}>{declineLabel}</button>
       )}
       {showDisclaimer && <WarriorPlusDisclaimer dark={dark} className="mt-2 max-w-xl" />}
     </div>
@@ -179,33 +137,20 @@ export function FunnelFooter() {
   );
 }
 
-/** Support inbox shown on the support page. */
 export const SUPPORT_EMAIL = "nadiamichelle308@gmail.com";
 
-/** Support and legal links shared by every page footer. */
 export function FooterLinks() {
   const linkClass = "underline underline-offset-4 hover:text-foreground";
   return (
     <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-      <Link to="/support" className={linkClass}>
-        Support
-      </Link>
-      <Link to="/privacy" className={linkClass}>
-        Privacy Policy
-      </Link>
-      <Link to="/income-disclaimer" className={linkClass}>
-        Income Disclaimer
-      </Link>
+      <Link to="/support" className={linkClass}>Support</Link>
+      <Link to="/privacy" className={linkClass}>Privacy Policy</Link>
+      <Link to="/income-disclaimer" className={linkClass}>Income Disclaimer</Link>
     </nav>
   );
 }
 
-/**
- * WarriorPlus fills this div with its required site disclaimer.
- * Rendered right under the buy button on each offer page, at the page's normal
- * text size and on no background of its own (see the .wplus_spdisclaimer rules
- * in src/styles.css).
- */
+/** Empty container for the WarriorPlus script declared in the route head. */
 export function WarriorPlusDisclaimer({
   dark = false,
   className = "",
@@ -214,16 +159,6 @@ export function WarriorPlusDisclaimer({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      if (!ref.current || ref.current.textContent?.trim()) return;
-      const pathname = window.location.pathname.replace(/\/$/, "") || "/";
-      const src = DISCLAIMER_SCRIPTS[pathname as FunnelRoute];
-      if (src) void loadDisclaimerScript(src);
-    }, 300);
-    return () => window.clearTimeout(timer);
-  }, []);
 
   return (
     <div
