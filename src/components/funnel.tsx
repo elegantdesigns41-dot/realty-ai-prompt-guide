@@ -15,6 +15,7 @@ export const NEXT_FUNNEL_ROUTE: Record<FunnelRoute, FunnelRoute | null> = {
   "/downsell-1": null,
 };
 
+/** Each offer page must use its own WarriorPlus Sales Page Code. */
 const DISCLAIMER_SCRIPTS: Record<FunnelRoute, string> = {
   "/": "https://warriorplus.com/o2/js/s4zkjk",
   "/upsell-1": "https://warriorplus.com/o2/js/rdw2pv",
@@ -23,20 +24,24 @@ const DISCLAIMER_SCRIPTS: Record<FunnelRoute, string> = {
 };
 
 function normalizePath(pathname: string) {
-  const clean = pathname.replace(/\/$/, "") || "/";
-  return clean as FunnelRoute;
+  return (pathname.replace(/\/$/, "") || "/") as FunnelRoute;
 }
 
+/** Ensure the route's script is in the body before its closing tag, without loading it twice. */
 function ensureDisclaimerScript(src: string) {
   const existing = Array.from(document.querySelectorAll<HTMLScriptElement>("script[src]"))
     .find((script) => script.src === src);
-  if (existing) return;
+
+  if (existing) {
+    if (existing.parentElement !== document.body) document.body.appendChild(existing);
+    return;
+  }
 
   const script = document.createElement("script");
   script.src = src;
   script.async = true;
   script.dataset.warriorplusDisclaimer = "true";
-  document.head.appendChild(script);
+  document.body.appendChild(script);
 }
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -56,7 +61,10 @@ export function OrderBar({ current }: { current: number }) {
       <Container className="flex flex-col items-center justify-between gap-3 py-3 text-sm sm:flex-row">
         <p className="flex items-center gap-2">
           <CircleCheck className="size-4 text-ember" />
-          <span><strong>Your guide is confirmed.</strong>{" "}<span className="text-ink-muted">Please don't close this page yet.</span></span>
+          <span>
+            <strong>Your guide is confirmed.</strong>{" "}
+            <span className="text-ink-muted">Please don't close this page yet.</span>
+          </span>
         </p>
         <ol className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest">
           {FUNNEL_STEPS.map((step, index) => (
@@ -151,9 +159,7 @@ export function WarriorPlusDisclaimer({ dark = false, className = "" }: { dark?:
 
   useEffect(() => {
     const src = DISCLAIMER_SCRIPTS[normalizePath(window.location.pathname)];
-    if (!src) return;
-
-    ensureDisclaimerScript(src);
+    if (src) ensureDisclaimerScript(src);
   }, []);
 
   return (
