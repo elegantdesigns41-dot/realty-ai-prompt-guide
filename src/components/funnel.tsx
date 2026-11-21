@@ -23,6 +23,18 @@ const DISCLAIMER_SCRIPTS: Record<FunnelRoute, string> = {
   "/downsell-1": "https://warriorplus.com/o2/js/blq8mw",
 };
 
+/** WarriorPlus scans for real anchor links; an onClick redirect isn't a buy-button link. */
+const BUY_URL_BY_PIXEL: Record<string, string> = {
+  "https://warriorplus.com/o2/btn/pn110011001/v19ymw/s4zkjk/479033":
+    "https://warriorplus.com/o2/buy/v19ymw/s4zkjk/q66n51",
+  "https://warriorplus.com/o2/btn/pn100011001/v19ymw/rdw2pv/480931":
+    "https://warriorplus.com/o2/buy/v19ymw/rdw2pv/x569q2",
+  "https://warriorplus.com/o2/btn/pn100011001/v19ymw/s660hn/480935":
+    "https://warriorplus.com/o2/buy/v19ymw/s660hn/thq2lh",
+  "https://warriorplus.com/o2/btn/pn100011001/v19ymw/blq8mw/480941":
+    "https://warriorplus.com/o2/buy/v19ymw/blq8mw/hbc676",
+};
+
 function normalizePath(pathname: string) {
   return (pathname.replace(/\/$/, "") || "/") as FunnelRoute;
 }
@@ -115,12 +127,21 @@ export function BuyBlock({
   dark?: boolean;
 }) {
   const declineClass = `text-sm underline underline-offset-4 ${dark ? "text-ink-muted hover:text-ink-foreground" : "text-muted-foreground hover:text-foreground"}`;
+  const buyUrl = pixelUrl ? BUY_URL_BY_PIXEL[pixelUrl] : undefined;
 
   return (
     <div className="flex flex-col items-start gap-4">
-      <Button variant="ember" size="xl" onClick={onBuy} className="h-auto whitespace-normal py-4 text-left">
-        {label}<ArrowRight />
-      </Button>
+      {buyUrl ? (
+        <Button variant="ember" size="xl" asChild className="h-auto whitespace-normal py-4 text-left">
+          <a href={buyUrl}>
+            {label}<ArrowRight />
+          </a>
+        </Button>
+      ) : (
+        <Button variant="ember" size="xl" onClick={onBuy} className="h-auto whitespace-normal py-4 text-left">
+          {label}<ArrowRight />
+        </Button>
+      )}
       {pixelUrl && <img src={pixelUrl} height={1} width={1} alt="" aria-hidden="true" style={{ visibility: "hidden", position: "absolute" }} />}
       {declineUrl ? <a href={declineUrl} className={declineClass}>{declineLabel}</a> : declineTo ? (
         <Link to={declineTo} className={declineClass}>{declineLabel}</Link>
