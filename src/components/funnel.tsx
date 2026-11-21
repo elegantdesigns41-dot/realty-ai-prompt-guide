@@ -40,25 +40,23 @@ function normalizePath(pathname: string) {
   return (pathname.replace(/\/$/, "") || "/") as FunnelRoute;
 }
 
-/** Load the homepage disclaimer after React has mounted its target containers. */
+/** Load a route disclaimer only after React has mounted all target containers. */
 function ensureDisclaimerScript(src: string) {
   const pending = disclaimerLoads.get(src);
   if (pending) return pending;
 
   const targets = Array.from(document.querySelectorAll<HTMLElement>(".wplus_spdisclaimer"));
-  const alreadyPopulated = targets.some((target) => target.textContent?.trim());
-  if (alreadyPopulated) return Promise.resolve();
+  if (targets.length === 0) return Promise.resolve();
 
   const existing = Array.from(document.querySelectorAll<HTMLScriptElement>("script[src]"))
     .find((script) => script.src === src);
 
-  // The main route previously placed this deferred script in <head>; it can run before React
-  // creates .wplus_spdisclaimer. Remove that copy and load once, after the targets exist.
-  if (normalizePath(window.location.pathname) === "/" && existing && !existing.dataset.warriorplusDisclaimer) {
-    existing.remove();
-  } else if (existing) {
+  if (existing?.dataset.warriorplusDisclaimer) {
+    disclaimerLoads.set(src, Promise.resolve());
     return Promise.resolve();
   }
+
+  if (existing) existing.remove();
 
   const load = new Promise<void>((resolve) => {
     const script = document.createElement("script");
@@ -196,7 +194,19 @@ export function WarriorPlusDisclaimer({ dark = false, className = "" }: { dark?:
 
   useEffect(() => {
     const src = DISCLAIMER_SCRIPTS[normalizePath(window.location.pathname)];
-    if (src) void ensureDisclaimerScript(src);
+    if (!src) return;
+
+    // Wait for at least one React disclaimer target and two paint frames. This prevents the
+    // route-head script from executing before this container has mounted on a first load.
+    let secondFrame = 0;
+    const firstFrame = requestAnimationFrame(() => {
+      secondFrame = requestAnimationFrame(() => void ensureDisclaimerScript(src));
+    });
+
+    return () => {
+      cancelAnimationFrame(firstFrame);
+      cancelAnimationFrame(secondFrame);
+    };
   }, []);
 
   return (
