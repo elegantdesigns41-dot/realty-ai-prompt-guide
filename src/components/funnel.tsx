@@ -40,17 +40,25 @@ function normalizePath(pathname: string) {
   return (pathname.replace(/\/$/, "") || "/") as FunnelRoute;
 }
 
-/** Keep the route-head script as the sole copy; never remove/reload it after it has populated the DOM. */
+/** Load the homepage disclaimer after React has mounted its target containers. */
 function ensureDisclaimerScript(src: string) {
+  const pending = disclaimerLoads.get(src);
+  if (pending) return pending;
+
+  const targets = Array.from(document.querySelectorAll<HTMLElement>(".wplus_spdisclaimer"));
+  const alreadyPopulated = targets.some((target) => target.textContent?.trim());
+  if (alreadyPopulated) return Promise.resolve();
+
   const existing = Array.from(document.querySelectorAll<HTMLScriptElement>("script[src]"))
     .find((script) => script.src === src);
 
-  // Each sales route already declares this script in its head. Restarting it here caused the
-  // first disclaimer to appear and then disappear when the duplicate script reinitialized it.
-  if (existing) return Promise.resolve();
-
-  const pending = disclaimerLoads.get(src);
-  if (pending) return pending;
+  // The main route previously placed this deferred script in <head>; it can run before React
+  // creates .wplus_spdisclaimer. Remove that copy and load once, after the targets exist.
+  if (normalizePath(window.location.pathname) === "/" && existing && !existing.dataset.warriorplusDisclaimer) {
+    existing.remove();
+  } else if (existing) {
+    return Promise.resolve();
+  }
 
   const load = new Promise<void>((resolve) => {
     const script = document.createElement("script");
