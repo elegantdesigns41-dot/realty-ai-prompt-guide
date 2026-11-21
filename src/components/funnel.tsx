@@ -15,7 +15,6 @@ export const NEXT_FUNNEL_ROUTE: Record<FunnelRoute, FunnelRoute | null> = {
   "/downsell-1": null,
 };
 
-/** Each offer page must use its own WarriorPlus Sales Page Code. */
 const DISCLAIMER_SCRIPTS: Record<FunnelRoute, string> = {
   "/": "https://warriorplus.com/o2/js/s4zkjk",
   "/upsell-1": "https://warriorplus.com/o2/js/rdw2pv",
@@ -41,16 +40,17 @@ function normalizePath(pathname: string) {
   return (pathname.replace(/\/$/, "") || "/") as FunnelRoute;
 }
 
-/** Load after the disclaimer containers exist; a script that ran in <head> won't rerun if moved. */
+/** Keep the route-head script as the sole copy; never remove/reload it after it has populated the DOM. */
 function ensureDisclaimerScript(src: string) {
-  const existingLoad = disclaimerLoads.get(src);
-  if (existingLoad) return existingLoad;
+  const existing = Array.from(document.querySelectorAll<HTMLScriptElement>("script[src]"))
+    .find((script) => script.src === src);
 
-  const existingScripts = Array.from(document.querySelectorAll<HTMLScriptElement>("script[src]"))
-    .filter((script) => script.src === src);
+  // Each sales route already declares this script in its head. Restarting it here caused the
+  // first disclaimer to appear and then disappear when the duplicate script reinitialized it.
+  if (existing) return Promise.resolve();
 
-  // Remove route-head copies: they may have executed before React mounted the disclaimer element.
-  for (const script of existingScripts) script.remove();
+  const pending = disclaimerLoads.get(src);
+  if (pending) return pending;
 
   const load = new Promise<void>((resolve) => {
     const script = document.createElement("script");
@@ -143,9 +143,7 @@ export function BuyBlock({
     <div className="flex flex-col items-start gap-4">
       {buyUrl ? (
         <Button variant="ember" size="xl" asChild className="h-auto whitespace-normal py-4 text-left">
-          <a href={buyUrl}>
-            {label}<ArrowRight />
-          </a>
+          <a href={buyUrl}>{label}<ArrowRight /></a>
         </Button>
       ) : (
         <Button variant="ember" size="xl" onClick={onBuy} className="h-auto whitespace-normal py-4 text-left">
