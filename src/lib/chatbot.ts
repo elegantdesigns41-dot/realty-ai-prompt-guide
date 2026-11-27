@@ -4,7 +4,7 @@ export type Checklist = {
   items: string[];
 };
 
-/** Draft checklist outline — replace with the real product contents when available. */
+/** Draft checklist outline — adapt these steps to the current ChatThing and Dante AI interfaces. */
 export const CHATBOT_CHECKLISTS: Checklist[] = [
   {
     title: "Plan your chatbot",
@@ -12,29 +12,29 @@ export const CHATBOT_CHECKLISTS: Checklist[] = [
     items: ["Pick one job for it to do first", "Choose who will use it — you or your clients", "List the questions it should handle"],
   },
   {
-    title: "Write its instructions",
-    blurb: "The instructions are what make it sound and act like you.",
-    items: ["Its role and tone of voice", "What it should always and never do", "Fair housing guardrails"],
+    title: "Choose your chatbot platform",
+    blurb: "Compare ChatThing and Dante AI, then start with the one that fits your workflow.",
+    items: ["Review each platform's current features and plans", "Decide where clients will use the chatbot", "Create an account with your chosen platform"],
   },
   {
     title: "Gather your files",
-    blurb: "Load it with information you're free to share.",
+    blurb: "Prepare information you're allowed to share with an AI tool.",
     items: ["Your own market summaries", "Your neighborhood guides", "Your FAQs and process documents"],
   },
   {
-    title: "Build it step by step",
-    blurb: "Click-by-click setup, no coding.",
-    items: ["Create the custom GPT", "Paste in your instructions", "Upload your files and set conversation starters"],
+    title: "Build your chatbot",
+    blurb: "Use ChatThing or Dante AI's no-code setup to configure your assistant.",
+    items: ["Create a chatbot in your chosen platform", "Add its role, tone, and helpful boundaries", "Upload or connect your approved knowledge sources"],
   },
   {
     title: "Test it before you rely on it",
     blurb: "Catch wrong or made-up answers early.",
-    items: ["Run the 30 test questions", "Check every answer against your files", "Tighten the instructions where it slips"],
+    items: ["Run the 30 test questions", "Check every answer against your files", "Tighten the instructions or sources where it slips"],
   },
   {
     title: "Keep it up to date",
     blurb: "A quick routine so it never goes stale.",
-    items: ["Swap in fresh market summaries", "Add new questions clients ask", "Re-test after every change"],
+    items: ["Swap in fresh market summaries", "Add new questions clients ask", "Re-test after every source or setup change"],
   },
   {
     title: "Put it to work",
@@ -43,7 +43,7 @@ export const CHATBOT_CHECKLISTS: Checklist[] = [
   },
 ];
 
-/** Ready-to-use instruction templates — drop in your details and paste into your custom GPT. */
+/** Ready-to-use instruction templates for configuring your chatbot. */
 export const INSTRUCTION_TEMPLATES = [
   {
     title: "Buyer question assistant",
@@ -63,16 +63,16 @@ export const INSTRUCTION_TEMPLATES = [
 export const TEST_QUESTION_COUNT = 30;
 
 export const CAN_DO = [
-  "Draft replies in your tone, using the files you've loaded",
+  "Draft replies in your tone, using the knowledge sources you provide",
   "Answer common buyer and seller questions from your FAQs",
   "Pull details from your own neighborhood guides",
   "Give you a consistent first draft every time",
-  "Be updated any time by swapping in new files",
+  "Be updated when you refresh its sources and configuration",
 ];
 
 export const CANT_DO = [
-  "Know live listings or today's prices unless you give it that information",
-  "Learn on its own — it follows your instructions and draws on your uploaded files",
+  "Know live listings or today's prices unless you provide current information",
+  "Learn on its own — it uses the instructions and sources you configure",
   "Replace your judgment, your license, or legal and contract advice",
   "Guarantee every answer is correct — always review before you send",
   "Promise more leads, listings or income",

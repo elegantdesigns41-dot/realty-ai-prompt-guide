@@ -25,17 +25,17 @@ import chatbotMockup from "@/assets/chatbot-mockup.jpg";
 export const Route = createFileRoute("/upsell-2")({
   head: () => ({
     meta: [
-      { title: "Custom AI Chatbot Checklists — Add It to Your Order" },
+      { title: "ChatThing + Dante AI Chatbot Setup Checklists — Add It to Your Order" },
       {
         name: "description",
         content:
-          "7 step-by-step checklists, 3 instruction templates and 30 test questions to build your own custom AI chatbot, loaded with your market summaries, neighborhood guides and FAQs.",
+          "Get 7 step-by-step checklists, 3 instruction templates and 30 test questions to set up a real estate chatbot with ChatThing or Dante AI, using your own market summaries, neighborhood guides and FAQs.",
       },
-      { property: "og:title", content: "Custom AI Chatbot Checklists for Real Estate Agents" },
+      { property: "og:title", content: "ChatThing + Dante AI Chatbot Setup for Real Estate Agents" },
       {
         property: "og:description",
         content:
-          "Build a custom AI chatbot loaded with your own market know-how — with an honest look at what it can and can't do.",
+          "Build a no-code chatbot with ChatThing or Dante AI, grounded in your own market know-how — with an honest look at what it can and can't do.",
       },
       { property: "og:type", content: "product" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -53,7 +53,7 @@ function Buy({ dark = false }: { dark?: boolean }) {
   return (
     <BuyBlock
       dark={dark}
-      label={`Yes! Add the Chatbot Checklists — ${CHATBOT_PRICE_LABEL}`}
+      label={`Yes! Add the Chatbot Setup Checklists — ${CHATBOT_PRICE_LABEL}`}
       declineLabel="No thanks — I'll skip building my own chatbot."
       onBuy={buy}
       pixelUrl={CHATBOT_BUY_PIXEL_URL}
@@ -89,18 +89,18 @@ function Hero() {
         <div className="animate-rise">
           <p className="eyebrow text-primary">One last upgrade</p>
           <h1 className="mt-5 text-4xl font-semibold leading-[1.06] sm:text-5xl lg:text-6xl">
-            Build your own AI chatbot,{" "}
-            <span className="text-ember">loaded with your market know-how.</span>
+            Build a real estate AI chatbot, {" "}
+            <span className="text-ember">with ChatThing or Dante AI.</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            <strong className="text-foreground">Custom AI Chatbot Checklists</strong> walk you through
-            setting up a custom GPT that follows your instructions and draws on your own market
-            summaries, neighborhood guides and FAQs. No coding — just tick each box.
+            <strong className="text-foreground">Chatbot Setup Checklists</strong> walk you through
+            choosing and setting up a no-code chatbot with ChatThing or Dante AI, then adding your own
+            market summaries, neighborhood guides and FAQs. No coding — just tick each box.
           </p>
           <ul className="mt-7 space-y-3">
             {[
-              "7 step-by-step checklists",
-              "3 ready-to-use instruction templates",
+              "7 step-by-step checklists for ChatThing and Dante AI",
+              "3 ready-to-use chatbot instruction templates",
               "30 test questions to check its answers",
             ].map((t) => (
               <li key={t} className="flex items-start gap-3">
@@ -119,7 +119,7 @@ function Hero() {
           <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-ember/20 blur-3xl" />
           <img
             src={chatbotMockup}
-            alt="Custom AI Chatbot Checklists booklet beside a clipboard checklist and a laptop showing a chat assistant"
+            alt="Chatbot setup checklists beside a checklist and a laptop showing a chat assistant"
             width={1280}
             height={1024}
             className="w-full rounded-[2rem] shadow-elegant"
@@ -137,21 +137,29 @@ function LoadedWith() {
         <div>
           <p className="eyebrow text-ember">How it actually works</p>
           <h2 className="mt-5 text-4xl font-semibold leading-tight sm:text-5xl">
-            Loaded with your know-how. Not "trained" on it.
+            Your knowledge, available in ChatThing or Dante AI.
           </h2>
         </div>
         <div className="space-y-5 self-center text-lg leading-relaxed text-ink-muted">
           <p>
-            A custom GPT isn't retrained on your data. It{" "}
-            <span className="text-ink-foreground">follows the instructions you write</span> and{" "}
-            <span className="text-ink-foreground">draws on the files you upload</span>.
+            ChatThing and Dante AI let you create chatbots using your own information. You configure
+            the bot and provide the sources it can draw from — it isn't automatically trained on your
+            business or live listing data.
           </p>
           <p>
-            That's good news: you can set it up in an afternoon, and update it any time by editing its
-            instructions or swapping in a fresh file.
+            Start with information you're allowed to share, test the answers, and refresh the sources
+            or setup whenever your information changes. Platform features and plans can change, so
+            check the provider's current details before signing up.
           </p>
           <p className="text-ink-foreground">
-            The edge is simple — <span className="text-ember">a chatbot that knows your market the way you've written it down</span>, and a process you can repeat.
+            Explore the platforms: {" "}
+            <a className="text-ember underline underline-offset-4" href="https://chatthing.ai/" target="_blank" rel="noreferrer">
+              ChatThing
+            </a>{" "}
+            and {" "}
+            <a className="text-ember underline underline-offset-4" href="https://www.dante-ai.com/" target="_blank" rel="noreferrer">
+              Dante AI
+            </a>.
           </p>
         </div>
       </Container>
@@ -165,9 +173,9 @@ function Checklists() {
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-primary">What's inside</p>
-          <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">From blank page to working chatbot.</h2>
+          <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">From blank page to tested chatbot.</h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Seven checklists, in the order you'll use them.
+            Seven checklists to help you choose a platform, build and test your chatbot.
           </p>
         </div>
         <ol className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -273,7 +281,8 @@ function CanCant() {
         </div>
         <p className="mt-6 flex items-start gap-2 text-sm text-muted-foreground">
           <Info className="mt-0.5 size-4 shrink-0" />
-          Creating a custom GPT needs a ChatGPT plan that includes it. Check your plan before you start.
+          ChatThing and Dante AI are separate services; review their current plans, terms and data
+          policies before uploading information.
         </p>
       </Container>
     </section>
@@ -330,7 +339,8 @@ function Decision() {
             Your market know-how, on call whenever you need it.
           </h2>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-muted">
-            One click adds Custom AI Chatbot Checklists to today's order. You'll get it with your guide.
+            One click adds the ChatThing + Dante AI Chatbot Setup Checklists to today's order. You'll
+            get them with your guide.
           </p>
           <div className="mt-9">
             <Buy dark />
